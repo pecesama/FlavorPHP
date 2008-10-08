@@ -13,13 +13,14 @@ class activeRecord implements ArrayAccess {
 		$this->registry = registry::getInstance();
 
 		$this->db = $this->registry["db"];
-				
+
 		$this->table = $this->modelName();
 		
 		$rs = $this->db->query("SHOW COLUMNS FROM ".$this->table);
 		
 		while ($row = $this->db->fetchRow()) {
 			$this->columns[$row["Field"]] = $row;
+			$this->record[$row["Field"]] = "";
 		    if( $row["Key"] === "PRI" ) {
 				$this->keyField = $row["Field"];
 		    }
@@ -119,6 +120,10 @@ class activeRecord implements ArrayAccess {
 		}
 		
 		return $rs;
+	}
+	
+	public function isNew(){
+		return $this->isNew;
 	}
 	
 	public function find($id) { 
