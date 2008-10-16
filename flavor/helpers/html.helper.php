@@ -28,7 +28,7 @@ class html extends singleton {
 	}
 	
 	public function includeCss($css) {
-		echo $css = "<link rel=\"stylesheet\" href=\"".$this->path."app/".$this->type."/css/".$css.".css\" type=\"text/css\" />\n";
+		$css = "<link rel=\"stylesheet\" href=\"".$this->path."app/".$this->type."/css/".$css.".css\" type=\"text/css\" />\n";
 		return $css;
 	}
 	

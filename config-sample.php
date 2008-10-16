@@ -1,4 +1,5 @@
 <?php
+define('requiresBD', true);
 define('DB_Engine', 'mysqli');
 define('DB_Server', 'localhost');
 define('DB_name', '');

@@ -24,27 +24,61 @@ if (!file_exists($configFile)) {
 }
 
 function __autoload($className) {
-	$directories = array(
-		Absolute_Path.'flavor'.DIRSEP.'classes'.DIRSEP.$className.'.class.php', // Flavor classes
-		Absolute_Path.'flavor'.DIRSEP.'interfaces'.DIRSEP.$className.'.interface.php', // maybe we want an interface
-		Absolute_Path.'flavor'.DIRSEP.'helpers'.DIRSEP.$className.'.helper.php', // maybe we want a helper
-		Absolute_Path.'app'.DIRSEP."controllers".DIRSEP.$className.'.php', // maybe we want a controller
-		Absolute_Path.'app'.DIRSEP.'models'.DIRSEP.$className.'.php', // maybe we want a model
-		Absolute_Path.'app'.DIRSEP.'libs'.DIRSEP.$className.'.class.php' // maybe we want a third party class
-		// If you need more directories just add them here
-	);
-	
 	$success = false;
-	foreach($directories as $file){
-		if(!$success){
-			if(file_exists($file)){
-				require_once($file);
-				$success = true;
-			}
-		}else break;
+	$classFile = Absolute_Path.'flavor'.DIRSEP.'classes'.DIRSEP.$className.'.class.php';
+
+	if (file_exists($classFile)) {
+		require_once($classFile);
+		$success= true;
 	}
-	if(!$success) {
-		die("Could not include class file '".$className."' ");
+	
+	// maybe we want an interface
+	if (!$success) {
+		$interfaceFile = Absolute_Path.'flavor'.DIRSEP.'interfaces'.DIRSEP.$className.'.interface.php';
+		if (file_exists($interfaceFile)) { 
+			require_once($interfaceFile);
+			$success= true;
+		}	
+	}
+	
+	// maybe we want a helper
+	if (!$success) {
+		$helperFile = Absolute_Path.'flavor'.DIRSEP.'helpers'.DIRSEP.$className.'.helper.php';
+		if (file_exists($helperFile)) { 
+			require_once($helperFile);
+			$success= true;
+		}	
+	}
+	
+	// maybe we want a controller
+	if (!$success) {
+		$controllerFile = Absolute_Path.'app'.DIRSEP.'controllers'.DIRSEP.$className.'.php';
+		if (file_exists($controllerFile)) { 
+			require_once($controllerFile);
+			$success= true;
+		}	
+	}
+	
+	// maybe we want a model
+	if (!$success) {
+		$modelFile = Absolute_Path.'app'.DIRSEP.'models'.DIRSEP.$className.'.php';
+		if (file_exists($modelFile)) { 
+			require_once($modelFile);
+			$success= true;
+		}	
+	}
+	
+	// maybe we want a third party class
+	if (!$success) {
+		$modelFile = Absolute_Path.'app'.DIRSEP.'libs'.DIRSEP.$className.'.class.php';
+		if (file_exists($modelFile)) { 
+			require_once($modelFile);
+			$success= true;
+		}	
+	}
+	
+	if (!$success) {
+		die("Could not include class file '".$className."' ");		
 	}
 }
 
@@ -60,7 +94,16 @@ try {
 	$path = (substr(Path, strlen(Path) - strlen("/")) == "/") ? Path : Path."/" ;
 	$registry->path = $path;
 	
-	$db = new dbFactory(strtolower(DB_Engine));
+	if(!defined('requiresBD')){
+		$db = new dbFactory(strtolower(DB_Engine));
+	} else {
+		if(requiresBD){
+			$db = new dbFactory(strtolower(DB_Engine));
+			$registry->db = $db;
+		} else {
+			$db = null;
+		}
+	}
 	$registry->db = $db;
 	
 	$views = new views();
