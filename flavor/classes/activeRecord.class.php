@@ -79,8 +79,12 @@ class activeRecord implements ArrayAccess {
 	
 	public function save() {
 		if( $this->isNew ) {
-			$this->record["created"] = date("Y-m-d H:i:s",strtotime("now"));
-			$this->record["modified"] = date("Y-m-d H:i:s",strtotime("now"));
+			if(isset($this->columns["created"])){
+				$this->record["created"] = date("Y-m-d H:i:s",strtotime("now"));
+			}
+			if(isset($this->columns["modified"])){
+				$this->record["modified"] = date("Y-m-d H:i:s",strtotime("now"));
+			}			
 			$id = $this->create($this->record);
 			$this->record[$this->keyField] = $id;
 			$this->isNew = false;
@@ -95,9 +99,11 @@ class activeRecord implements ArrayAccess {
 			throw new Exception( "Primary Key Missing, update failed" );
 		}
 		
-		$key = $this->record[$this->keyField];		
-
-		$this->record["modified"] = date("Y-m-d H:i:s",strtotime("now"));
+		$key = $this->record[$this->keyField];
+		
+		if(isset($this->columns["modified"])){
+			$this->record["modified"] = date("Y-m-d H:i:s",strtotime("now"));
+		}
 		
 		$sql = "UPDATE ".$this->table." SET ".$this->db->buildArray("UPDATE", $this->record)." WHERE ".$this->keyField.'='.intval($key);
 		$rs = $this->db->query($sql);
