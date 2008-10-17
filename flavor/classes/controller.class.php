@@ -4,6 +4,7 @@ abstract class controller {
 	
 	protected $registry;
 	protected $session;
+	protected $cookie;
 	protected $pagination;	
 	protected $l10n;
 	protected $themes;
@@ -16,6 +17,7 @@ abstract class controller {
 	public function __construct() {
 		$this->registry = registry::getInstance();
 		$this->session = $this->registry["session"];
+		$this->cookie = $this->registry["cookie"];
 		$this->view = $this->registry["views"];
 		$this->themes = $this->registry["themes"];
 		$this->path = $this->registry["path"];

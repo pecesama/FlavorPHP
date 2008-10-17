@@ -81,6 +81,9 @@ try {
 	$session = session::getInstance();
 	$registry->session = $session;
 	
+	$cookie = cookie::getInstance();
+	$registry->cookie = $cookie;
+	
 	$router = new router();
 	$registry->router = $router;
 	
