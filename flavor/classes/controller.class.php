@@ -78,7 +78,7 @@ abstract class controller {
 		return strtolower($controller[0]);
 	}
 	
-	private function endsWith($str, $sub) {
+	protected function endsWith($str, $sub) {
 		return (substr($str, strlen($str) - strlen($sub)) == $sub);
 	}
 	

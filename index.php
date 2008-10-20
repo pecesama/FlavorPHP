@@ -28,6 +28,7 @@ function __autoload($className) {
 		Absolute_Path.'flavor'.DIRSEP.'classes'.DIRSEP.$className.'.class.php', // Flavor classes
 		Absolute_Path.'flavor'.DIRSEP.'interfaces'.DIRSEP.$className.'.interface.php', // maybe we want an interface
 		Absolute_Path.'flavor'.DIRSEP.'helpers'.DIRSEP.$className.'.helper.php', // maybe we want a helper
+		Absolute_Path.'app'.DIRSEP.$className.'.php', // maybe we want appcontroller or appviews
 		Absolute_Path.'app'.DIRSEP."controllers".DIRSEP.$className.'.php', // maybe we want a controller
 		Absolute_Path.'app'.DIRSEP.'models'.DIRSEP.$className.'.php', // maybe we want a model
 		Absolute_Path.'app'.DIRSEP.'libs'.DIRSEP.$className.'.class.php' // maybe we want a third party class
@@ -72,7 +73,7 @@ try {
 	}
 	$registry->db = $db;
 	
-	$views = new views();
+	$views = new appviews();
 	$registry->views = $views;
 
 	$themes = new themes();
