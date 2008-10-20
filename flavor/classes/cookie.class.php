@@ -30,6 +30,12 @@ class cookie extends singleton implements ArrayAccess {
 		setcookie($key, null, time() - 7 * 24 * 3600);
 	}
 	
+	public function set($key, $value,$my_expire=NULL,$my_target=NULL){	
+		$expire = ($my_expire)? time()+$my_expire : $this->expire;
+		$target = ($my_target)? $my_target : "/";
+		setcookie($key, $value, $expire, $target);
+	}
+	
 	public function check($key){
 		return array_key_exists($key, $_COOKIE);
 	}		
