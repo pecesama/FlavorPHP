@@ -34,7 +34,7 @@ function __autoload($className) {
 		Absolute_Path.'app'.DIRSEP.'libs'.DIRSEP.$className.'.class.php' // maybe we want a third party class
 		// If you need more directories just add them here
 	);
-	
+
 	$success = false;
 	foreach($directories as $file){
 		if(!$success){
@@ -55,41 +55,40 @@ function __autoload($className) {
 $registry = registry::getInstance();
 
 try {
-	
+
 	ob_start();
 
 	$path = (substr(Path, strlen(Path) - strlen("/")) == "/") ? Path : Path."/" ;
 	$registry->path = $path;
-	
+
 	if(!defined('requiresBD')){
 		$db = new dbFactory(strtolower(DB_Engine));
 	} else {
 		if(requiresBD){
 			$db = new dbFactory(strtolower(DB_Engine));
-			$registry->db = $db;
 		} else {
 			$db = null;
 		}
 	}
 	$registry->db = $db;
-	
+
 	$views = new appviews();
 	$registry->views = $views;
 
 	$themes = new themes();
 	$registry->themes = $themes;
-	
+
 	$session = session::getInstance();
 	$registry->session = $session;
-	
+
 	$cookie = cookie::getInstance();
 	$registry->cookie = $cookie;
-	
+
 	$router = new router();
 	$registry->router = $router;
-	
+
 	$router->dispatch(); // Here starts the party
-	
+
 } catch(Exception $e) {
 	echo $e->getMessage();
 	exit();
