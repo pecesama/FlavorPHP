@@ -118,6 +118,9 @@ class mysqli_db extends singleton implements data {
 	}
 	
 	public function sql_escape($msg) {
+		if(get_magic_quotes_gpc()) {
+	          $msg = stripslashes($msg);
+	    }
 		return mysqli_real_escape_string($this->connectionId, $msg);
 	}
 	

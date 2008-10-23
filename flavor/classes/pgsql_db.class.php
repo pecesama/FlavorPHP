@@ -114,7 +114,10 @@ class pgsql_db extends singleton implements data {
 		return $re;
 	}
 	
-	public function sql_escape($msg) { return $msg;
+	public function sql_escape($msg) {
+		if(get_magic_quotes_gpc()) {
+	          $msg = stripslashes($msg);
+	    }
 		return pg_escape_string($this->connectionId, $msg);
 	}
 	
