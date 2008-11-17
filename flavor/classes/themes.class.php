@@ -50,11 +50,25 @@ class themes{
 		//evaluate All as PHP code
 		ob_start();eval($this->output);
 		$this->output = ob_get_clean();
+
 	}
 	
 	protected function eval_control_structures(){
+		//finding {header *}
+		preg_match_all("/{header ([^}]+?)}/s",$this->output,$out);
+		$headers = '';
+		foreach ($out[1] as $o)
+			$headers .= "header('$o');\n";
+
+		$this->output = preg_replace("/{header [^}]+?}/s","",$this->output);
+
+		$this->output = str_replace('\"','\\\"',trim($this->output));
+		$this->output = "echo \"".str_replace('"','\"',trim($this->output))."\";";
+
+		$this->output = preg_replace("/\n+/s","\n",$this->output);
+		$this->output = $headers.$this->output;
+
 		//finding IFs sentences and converting to php code
-		$this->output = "echo \"".addslashes($this->output)."\";";
 		$this->output = preg_replace_callback("/{if ([^}]+)}/",create_function('$arr','return "\";if(".stripslashes($arr[1])."){echo\"";'),$this->output);
 		$this->output = preg_replace("/{else}/","\";}else{echo\"",$this->output);
 		$this->output = preg_replace_callback("/{elseif ([^}]+)}/",create_function('$arr','return "\";}elseif(".stripslashes($arr[1])."){echo\"";'),$this->output);
