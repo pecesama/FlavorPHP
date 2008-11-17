@@ -12,16 +12,21 @@ class router {
 		
 		$this->getController($controller, $action, $params);
 		$class = $controller."_controller";
-				
+
 		$controller = new $class();
 
 		if (is_callable(array($controller, $action)) == false) {
+			$params = $action;
+			$action = 'index';
 			#$this->notFound();
 		}
-		
+
 		$controller->action = $action;
 		$controller->params = $params;
-		$controller->$action($params);
+		if($params)
+			$controller->$action($params);
+		else
+			$controller->$action();
 	}
 	
 	private function getController(&$controller, &$action, &$params) {
@@ -45,13 +50,13 @@ class router {
 					$params = $parts[0];
 				}else{
 					$controller = $parts[0];
-					
+
 					if (isset($parts[1])) {
 						$action = $parts[1];
 					} else {
 						$action = "index";
 					}
-					
+
 					if (isset($parts[2])) {
 						$params = $parts[2];
 					}
