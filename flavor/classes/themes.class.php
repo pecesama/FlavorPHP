@@ -74,7 +74,7 @@ class themes{
 		#$this->output = preg_replace_callback("/{if ([^}]+)}/",create_function('$arr','return "\";if(".stripslashes($arr[1])."){echo\"";'),$this->output);
 		$this->output = preg_replace_callback("/{if ([^}]+)}/",create_function('$arr','return "\";if(".stripslashes(preg_replace(array("/\\\\$([a-zA-Z0-9]+)/s","/\\\\\\$this->vars\[\\\'([a-zA-Z0-9]+)\\\'\]\.([a-zA-Z0-9]+)/s"),array("\$this->vars[\'\$1\']","\\\\\\$this->vars[\\\'$1\\\'][\\\'$2\\\']"),$arr[1]))."){echo\"";'),$this->output);
 		$this->output = preg_replace("/{else}/","\";}else{echo\"",$this->output);
-		$this->output = preg_replace_callback("/{elseif ([^}]+)}/",create_function('$arr','return "\";}elseif(".stripslashes($arr[1])."){echo\"";'),$this->output);
+		$this->output = preg_replace_callback("/{elseif ([^}]+)}/",create_function('$arr','return "\";}elseif(".stripslashes(preg_replace(array("/\\\\$([a-zA-Z0-9]+)/s","/\\\\\\$this->vars\[\\\'([a-zA-Z0-9]+)\\\'\]\.([a-zA-Z0-9]+)/s"),array("\$this->vars[\'\$1\']","\\\\\\$this->vars[\\\'$1\\\'][\\\'$2\\\']"),$arr[1]))."){echo\"";'),$this->output);
 		$this->output = preg_replace("/{\/if}/","\";} echo \"",$this->output);
 
 		//finding FOREACHs or BLOCKs sentences and converting to php code
