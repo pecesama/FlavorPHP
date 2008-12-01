@@ -58,7 +58,7 @@ class views {
 		}
 
 		if (file_exists($path) == false) {							
-			throw new Exception("Flavor.fwk error: ". $errorMsg);
+			throw new Exception("FlavorPHP error: ". $errorMsg);
 			return false;
 		}
 		

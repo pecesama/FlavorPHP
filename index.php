@@ -1,6 +1,6 @@
 <?php
 /**
-  * Flavor.fwk is a framework based on MVC pattern, constructed with the help of several patterns.
+  * FlavorPHP is a framework based on MVC pattern, constructed with the help of several patterns.
   *
   * @version SVN
   * @author Pedro Santana <pecesama_at_gmail_dot_com>
@@ -8,8 +8,8 @@
 
 error_reporting (E_ALL);
 
-if(!version_compare(PHP_VERSION, '5.1.0', '>=' ) ) {
-	die("Flavor.fwk needs PHP 5.1.x or higher to run. You are currently running PHP ".PHP_VERSION.".");
+if(!version_compare(PHP_VERSION, '5.2.0', '>=' ) ) {
+	die("FlavorPHP needs PHP 5.2.x or higher to run. You are currently running PHP ".PHP_VERSION.".");
 }
 
 define('DIRSEP', DIRECTORY_SEPARATOR);
