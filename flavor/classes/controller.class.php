@@ -54,8 +54,11 @@ abstract class controller {
 	}
 	
 	public function renderTheme($theme,$file='index.htm'){
+		$this->beforeRender();
 		$path = Absolute_Path."app".DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";			
 		echo $this->themes->fetch($path);
+		$this->afterRender();
+		exit;
 	}
 
 	public function fetchTheme($theme,$file='index.htm'){
