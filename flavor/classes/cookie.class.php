@@ -27,7 +27,7 @@ class cookie extends singleton implements ArrayAccess {
 	}
 	
 	public function destroy($key){
-		setcookie($key, null, time() - 7 * 24 * 3600);
+		setcookie($key, null, time() - 7 * 24 * 3600, "/");
 	}
 	
 	public function set($key, $value,$my_expire=NULL,$my_target=NULL){	
