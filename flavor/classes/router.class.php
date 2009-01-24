@@ -15,10 +15,9 @@ class router {
 
 		$controller = new $class();
 
-		if (is_callable(array($controller, $action)) == false) {
-			$params = $action;
-			$action = 'index';
-			#$this->notFound();
+		if(is_callable(array($controller, $params))){
+			$action = $params;
+			$params = null;
 		}
 
 		$controller->action = $action;
