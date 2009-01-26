@@ -13,7 +13,7 @@ class router{
 
 		$controller = new $class();
 
-/*DEBUG
+/*
 echo "controller: $class<br>";
 echo "action: $action<br>";
 echo "params: $params<br>";
@@ -22,18 +22,19 @@ echo "<hr>";
 
 		if(!is_callable(array($controller, $action)) or $action=='index')
 		if(is_callable(array($controller, $params))){
-			if(!is_numeric($params)){
+			if(!is_numeric($params) and method_exists($controller,$params)){
 				$action = $params;
 				$params = $extra?$extra:null;
 			}
 		}
 
-/*DEBUG
+/*
 echo "controller: $class<br>";
 echo "action: $action<br>";
 echo "params: $params<br>";
 echo "<hr>";
 */
+
 		$controller->action = $action;
 		$controller->params = $params;
 		if($params)
