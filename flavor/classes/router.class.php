@@ -54,7 +54,7 @@ class router{
 				$params = $this->parts[0];
 				unset($this->parts[0]);
 			}else{
-				if(file_exists(Absolute_Path.'app'.DIRSEP.'controllers'.DIRSEP."{$this->parts[0]}_controller.php")){
+				if($this->controllerExists($this->parts[0])){
 					$controller = $this->parts[0];
 					unset($this->parts[0]);
 					
@@ -124,19 +124,26 @@ class router{
 	 */
 	private function getParams(){
 		foreach($this->routes as $target=>$route){
-			if(preg_match("|^$route/$|",$this->uri,$out)){
+			if(preg_match("|^$route/$|",($this->uri!='index/')?$this->uri:'',$out)){			
 				if(isset($out)){
 					unset($out[0]);
 					foreach($out as $k=>$v)
 						$target = str_replace("\$$k",$v,$target);
 				}
-				$this->route = $this->cleanRoute($target);
-				$this->cleanRoute();
-				break;
+				if(!($this->controllerExists($this->parts[0]) and ($route=='(.*)' or $route=='(.+)'))){
+					$this->route = $this->cleanRoute($target);
+					$this->cleanRoute();
+				}
 			}
 		}
 	}
 
+	private function controllerExists($controller){
+		return file_exists(Absolute_Path.'app'.DIRSEP.'controllers'.DIRSEP."{$controller}_controller.php");
+		/*
+		Convertiro /:num/ y /:str/ en su equivalente a expresion regular.
+		*/
+	}
 	/*
 	 * Obtiene las rutas desde el archivo app/routes.php
 	 */
@@ -155,7 +162,6 @@ class router{
 			$target = "$controller/$action/$params";
 		}
 		$this->routes[$target] = $GET;
-	}
-	
+	}	
 }
 ?>
