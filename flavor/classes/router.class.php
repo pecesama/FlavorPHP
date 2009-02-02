@@ -29,9 +29,11 @@ class router{
 			$this->notFound();
 
 		$_action = substr($this->originalUri,0,strpos($this->originalUri,'/'));
+		if(substr($this->originalUri,strpos($this->originalUri,'/')))
+			$_params = substr($this->originalUri,strlen($_action)+1,strpos($this->originalUri,'/',strpos($this->originalUri,'/',strlen($_action)+1))-strlen($_action)-1);
 		if(method_exists($controller,$_action) and $_action!='index'){
 			$action = $_action;
-			$params = '';
+			$params = isset($_params)?$_params:'';
 		}
 
 		$controller->action = $action;
@@ -170,15 +172,5 @@ class router{
 		}
 		$this->routes[$target] = $GET;
 	}
-}
-
-
-
-
-
-function pre($arr){
-echo "<pre>";
-print_r($arr);
-echo "</pre>";
 }
 ?>
