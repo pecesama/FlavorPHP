@@ -6,7 +6,7 @@ class router{
 		'action'=>'index',
 		'params'=>''
 	);
-	private $route,$uri;
+	private $route,$uri,$originalUri;
 	private $routes = array();
 	private $parts;
 	
@@ -27,10 +27,15 @@ class router{
 
 		if(!is_callable(array($controller,$action)))
 			$this->notFound();
-				
+
+		if(method_exists($controller,substr($this->originalUri,0,strpos($this->originalUri,'/')))){
+			$action = substr($this->originalUri,0,strpos($this->originalUri,'/'));
+			$params = '';
+		}
+
 		$controller->action = $action;
 		$controller->params = $params;
-		
+
 		if($params)
 			$controller->$action($params);
 		else
@@ -43,6 +48,7 @@ class router{
 		if(empty($this->route))
 			$this->route = "index";
 
+		$this->originalUri = $this->cleanRoute($this->route);
 		$this->cleanRoute();
 		$this->getParams();
 		
@@ -70,8 +76,10 @@ class router{
 						$action = 'index';
 						$params = null;
 					}
-				}else
-					$this->notFound();
+				}else{
+					$controller = 'index';
+					$action = $this->parts[0];
+				}
 			}
 		}else{
 			$controller = "index";
@@ -124,25 +132,23 @@ class router{
 	 */
 	private function getParams(){
 		foreach($this->routes as $target=>$route){
-			if(preg_match("|^$route/$|",($this->uri!='index/')?$this->uri:'',$out)){			
+			if(preg_match("|^$route/$|",($this->uri!='index/')?$this->uri:'',$out)){
 				if(isset($out)){
 					unset($out[0]);
 					foreach($out as $k=>$v)
 						$target = str_replace("\$$k",$v,$target);
-				}
-				if(!($this->controllerExists($this->parts[0]) and ($route=='(.*)' or $route=='(.+)'))){
-					$this->route = $this->cleanRoute($target);
-					$this->cleanRoute();
+					if(!($this->controllerExists($this->parts[0]) and ($route=='(.*)' or $route=='(.+)'))){
+						$this->route = $this->cleanRoute($target);
+						$this->cleanRoute();
+						break;
+					}
 				}
 			}
-		}
+		}		
 	}
 
 	private function controllerExists($controller){
 		return file_exists(Absolute_Path.'app'.DIRSEP.'controllers'.DIRSEP."{$controller}_controller.php");
-		/*
-		Convertiro /:num/ y /:str/ en su equivalente a expresion regular.
-		*/
 	}
 	/*
 	 * Obtiene las rutas desde el archivo app/routes.php
@@ -162,6 +168,6 @@ class router{
 			$target = "$controller/$action/$params";
 		}
 		$this->routes[$target] = $GET;
-	}	
+	}
 }
 ?>
