@@ -28,8 +28,9 @@ class router{
 		if(!is_callable(array($controller,$action)))
 			$this->notFound();
 
-		if(method_exists($controller,substr($this->originalUri,0,strpos($this->originalUri,'/')))){
-			$action = substr($this->originalUri,0,strpos($this->originalUri,'/'));
+		$_action = substr($this->originalUri,0,strpos($this->originalUri,'/'));
+		if(method_exists($controller,$_action) and $_action!='index'){
+			$action = $_action;
 			$params = '';
 		}
 
@@ -169,5 +170,15 @@ class router{
 		}
 		$this->routes[$target] = $GET;
 	}
+}
+
+
+
+
+
+function pre($arr){
+echo "<pre>";
+print_r($arr);
+echo "</pre>";
 }
 ?>
