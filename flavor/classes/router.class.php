@@ -28,14 +28,6 @@ class router{
 		if(!is_callable(array($controller,$action)))
 			$this->notFound();
 
-		$_action = substr($this->originalUri,0,strpos($this->originalUri,'/'));
-		if(substr($this->originalUri,strpos($this->originalUri,'/')))
-			$_params = substr($this->originalUri,strlen($_action)+1,strpos($this->originalUri,'/',strpos($this->originalUri,'/',strlen($_action)+1))-strlen($_action)-1);
-		if(method_exists($controller,$_action) and $_action!='index'){
-			$action = $_action;
-			$params = isset($_params)?$_params:'';
-		}
-
 		$controller->action = $action;
 		$controller->params = $params;
 
@@ -73,7 +65,12 @@ class router{
 						unset($this->parts[1]);
 					}elseif(isset($this->parts[1])){
 						$action = $this->parts[1];
-						$params = isset($this->parts[2])?$this->parts[2]:null;
+						if(isset($this->parts[2])){
+							$params = isset($this->parts[2]);
+							unset($this->parts[2]);							
+						}else{
+							$params = null;
+						}
 						unset($this->parts[1]);
 					}else{
 						$action = 'index';
