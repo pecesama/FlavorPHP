@@ -9,6 +9,7 @@ class views {
 	protected $ajax;
 	protected $path;
 	protected $session;
+	protected $cookie;
 	protected $l10n;
 
 	public function __construct() {
@@ -17,6 +18,7 @@ class views {
 		$this->html = html::getInstance();
 		$this->ajax = new ajax();
 		$this->session = session::getInstance();
+		$this->cookie = cookie::getInstance();
 		$this->l10n = l10n::getInstance();
 	}
 	
