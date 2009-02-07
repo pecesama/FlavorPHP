@@ -65,8 +65,9 @@ class router{
 						unset($this->parts[1]);
 					}elseif(isset($this->parts[1])){
 						$action = $this->parts[1];
+
 						if(isset($this->parts[2])){
-							$params = isset($this->parts[2]);
+							$params = $this->parts[2];
 							unset($this->parts[2]);							
 						}else{
 							$params = null;
@@ -76,10 +77,8 @@ class router{
 						$action = 'index';
 						$params = null;
 					}
-				}else{
-					$controller = 'index';
-					$action = $this->parts[0];
-				}
+				}else
+					$this->notFound();
 			}
 		}else{
 			$controller = "index";

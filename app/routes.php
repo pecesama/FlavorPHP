@@ -18,4 +18,7 @@
 	Tambien se puede mandar como segundo parametro un array como el siguiente:
 	$this->add('(.*)',array('controller'=>'index','action'=>'index','params'=>'$1'));	
 */
+$this->add('dos/uno/(.*)','cuatro/index/$1');
+$this->add('dos/(.*)','tres/index/$1');
+$this->add('(.*)','index/index/$1');
 ?>
