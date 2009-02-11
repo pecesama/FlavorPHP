@@ -86,6 +86,8 @@ try {
 
 	$router = new router();
 	$registry->router = $router;
+	
+	$registry->validateErrors = array();
 
 	$router->dispatch(); // Here starts the party
 

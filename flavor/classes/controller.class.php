@@ -1,7 +1,7 @@
 <?php
 
 abstract class controller {
-	
+		
 	protected $registry;
 	protected $session;
 	protected $cookie;
@@ -14,8 +14,8 @@ abstract class controller {
 	public $action;
 	public $params;
 
-	public function __construct() {
-		$this->registry = registry::getInstance();
+	public function __construct() {		
+		$this->registry = registry::getInstance();		
 		$this->session = $this->registry["session"];
 		$this->cookie = $this->registry["cookie"];
 		$this->view = $this->registry["views"];
@@ -31,7 +31,10 @@ abstract class controller {
 	public function afterRender() {}
 	
 	public function redirect($url, $intern = true) {
-		if ($intern) {
+		print_r($this->registry->validateErrors);
+		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
+		
+		if ($intern) {			
 			$url = (!$this->endsWith($url, "/")) ? $url."/" : $url ;
 			$url = $this->path.$url;
 		} else {

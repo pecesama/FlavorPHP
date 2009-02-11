@@ -19,6 +19,14 @@ class registry extends singleton implements ArrayAccess {
 		return true;
 	}
 	
+	public function modify($key, $value){
+		if (isset($this->vars[$key]) == false) {
+			throw new Exception("The var '".$key."' does not exist.");
+		}
+		$this->vars[$key] = $value;
+		return true;
+	}
+	
 	public function __get($key){
 		if (isset($this->vars[$key]) == false) {
 			return null;

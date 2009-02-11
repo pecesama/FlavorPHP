@@ -2,15 +2,20 @@
 
 class activeRecord implements ArrayAccess {
 	private $record = array();
+	public $validateErrors;
+	public $filterErrors;
 	private $keyField = "";
 	private $table = NULL;
 	private $isNew = true;
+	private $isValid = true;
 	protected $registry;
 	public $db;	
 	private $columns;
 	
 	public function __construct() {
 		$this->registry = registry::getInstance();
+		$this->validateErrors = $this->registry->validateErrors;
+		$this->filterErrors = $this->registry->filterErrors;
 
 		$this->db = $this->registry["db"];
 
@@ -24,8 +29,7 @@ class activeRecord implements ArrayAccess {
 		    if( $row["Key"] === "PRI" ) {
 				$this->keyField = $row["Field"];
 		    }
-		}	
-		
+		}		
 		
 		if(empty($this->keyField)) {
 		    throw new Exception( "Primary Column not found for Table: '".$this->table."'");
@@ -75,22 +79,33 @@ class activeRecord implements ArrayAccess {
 		}
 		
 		return $this->db->lastId();
-	}	
+	}
+	
+	public function invalidate(){
+		$this->isValid = false;
+	}
 	
 	public function save() {
-		if( $this->isNew ) {
-			if(isset($this->columns["created"])){
-				$this->record["created"] = date("Y-m-d H:i:s",strtotime("now"));
+		$this->record =	$this->doFilter($this->record);
+		$this->isValid = $this->validates($this->record);
+
+		if ($this->isValid) {		
+			if( $this->isNew ) {
+				if(isset($this->columns["created"])){
+					$this->record["created"] = date("Y-m-d H:i:s",strtotime("now"));
+				}
+				if(isset($this->columns["modified"])){
+					$this->record["modified"] = date("Y-m-d H:i:s",strtotime("now"));
+				}			
+				$id = $this->create($this->record);
+				$this->record[$this->keyField] = $id;
+				$this->isNew = false;
+				return $id;
+			} else {
+				return $this->update();
 			}
-			if(isset($this->columns["modified"])){
-				$this->record["modified"] = date("Y-m-d H:i:s",strtotime("now"));
-			}			
-			$id = $this->create($this->record);
-			$this->record[$this->keyField] = $id;
-			$this->isNew = false;
-			return $id;
 		} else {
-			return $this->update();
+			return NULL;
 		}
 	}	
 	

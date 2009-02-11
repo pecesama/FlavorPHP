@@ -18,7 +18,7 @@ class views {
 		$this->html = html::getInstance();
 		$this->ajax = new ajax();
 		$this->session = session::getInstance();
-		$this->cookie = cookie::getInstance();
+		$this->cookie = session::getInstance();
 		$this->l10n = l10n::getInstance();
 	}
 	

@@ -3,12 +3,13 @@
 class html extends singleton {
 	
 	protected $registry;
+	protected $validateErrors;
 	protected $path;
 	protected $type = "views";
 	
 	public function __construct() {
 		$this->registry = registry::getInstance();
-		$this->path = $this->registry["path"];
+		$this->path = $this->registry["path"];		
 	}
 	
 	public function setType($type) {
@@ -64,7 +65,30 @@ class html extends singleton {
 	public function includeATOM($atomUrl="feed/atom/") {		
 		$atom = "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"Atom 1.0\" href=\"".$this->path.$atomUrl."\" />\n";
 		return $atom;
-	}	
+	}
+	
+	public function validateError($field) {
+		$html = "";
+		$this->validateErrors = (isset($_SESSION["flavor_php_session"]["validateErrors"])) ? $_SESSION["flavor_php_session"]["validateErrors"] : NULL ;		
+		if (!is_null($this->validateErrors)) {			
+			if ($val = $this->findInArray($this->validateErrors, $field) ) {	
+				$html = "<div class=\"error\">".$val."</div>";
+			}
+		}		
+		return $html;
+	}
+	
+	private function findInArray($arr, $str) {
+		$response = "";
+		foreach ($this->validateErrors as $key=>$element){
+			foreach ($element as $name=>$value){
+				if ($name == $str) {					
+					$response = $value['message'];
+				}
+			}    
+		}
+		return $response;
+	}
 		
 	public function formPost($url){
 		return "<form action=\"".$this->path.$url."\" method=\"post\">";
@@ -132,7 +156,6 @@ class html extends singleton {
 	}
 	
 	public function select($name, $values, $selected=""){
-		//$values[""]="";		
 		$html = "<select name=\"".$name."\">\n";		
 		foreach ($values as $key=>$value){
 			$html .= "\t<option ";
