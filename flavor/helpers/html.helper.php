@@ -85,6 +85,7 @@ class html extends singleton {
 				if ($name == $str) {					
 					$response = $value['message'];
 				}
+				unset($_SESSION["flavor_php_session"]["validateErrors"][$key]);
 			}    
 		}
 		return $response;
