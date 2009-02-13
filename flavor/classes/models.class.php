@@ -3,9 +3,13 @@
 
 class models extends activeRecord {
 		
+	protected $validate;
+	protected $filter;
+	
 	public function __construct() {
 		parent::__construct();
-		
+		$this->validate = NULL;
+		$this->filter = NULL;
 		if (!defined('VALID_NOT_EMPTY')) { 
 			define('VALID_NOT_EMPTY', '/.+/'); 
 		}
@@ -20,7 +24,8 @@ class models extends activeRecord {
 		}		
 	}
 	
-	public function doFilter($datos) {		
+	public function doFilter($datos) {
+		if(!$this->filter){ return $datos; }
 		foreach ($datos as $campo => $valor) {			
 			if(array_key_exists($campo, $this->filter)) {				
 				if(array_key_exists('filters', $this->filter[$campo])) {
@@ -44,6 +49,7 @@ class models extends activeRecord {
 	}
 	
 	public function validates($datos) {
+		if(!$this->validate){ return true; }
 		$this->register->datos = $datos;
 		foreach ($datos as $campo => $valor) {
 			if(array_key_exists($campo, $this->validate)) {
