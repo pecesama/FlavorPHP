@@ -1,9 +1,8 @@
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule  category/(.*) index.php?url=index/index/$1 [L,QSA]
-RewriteRule  [0-9]{4}/[0-9]{2}/[0-9]{2}/(.*) index.php?url=index/index/$1 [L,QSA]
+RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+
 RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
 </IfModule>
