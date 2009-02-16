@@ -1,0 +1,551 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sabrosus-lite 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-05-16 22:14-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add a bookmark"
+msgstr ""
+
+msgid "Edit a bookmark"
+msgstr ""
+
+msgid "Manage your bookmarks"
+msgstr ""
+
+msgid "Passwords must match"
+msgstr ""
+
+msgid "Configure"
+msgstr ""
+
+msgid "The URL you've followed requires your login."
+msgstr ""
+
+msgid "Sorry, the information you've entered is incorrect."
+msgstr ""
+
+msgid "You've successfully logged out."
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "home"
+msgstr ""
+
+msgid "what is sabros.us lite?"
+msgstr ""
+
+msgid " tag / "
+msgstr ""
+
+msgid "Afrikaans"
+msgstr ""
+
+msgid "Albanian"
+msgstr ""
+
+msgid "Arabic"
+msgstr ""
+
+msgid "Basque"
+msgstr ""
+
+msgid "Bulgarian"
+msgstr ""
+
+msgid "Belarusian"
+msgstr ""
+
+msgid "Catalan"
+msgstr ""
+
+msgid "Chinese"
+msgstr ""
+
+msgid "Croatian"
+msgstr ""
+
+msgid "Czech"
+msgstr ""
+
+msgid "Danish"
+msgstr ""
+
+msgid "Dutch"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Estonian"
+msgstr ""
+
+msgid "Faeroese"
+msgstr ""
+
+msgid "Farsi"
+msgstr ""
+
+msgid "Finnish"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "Gaelic"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "Hebrew"
+msgstr ""
+
+msgid "Hindi"
+msgstr ""
+
+msgid "Hungarian"
+msgstr ""
+
+msgid "Icelandic"
+msgstr ""
+
+msgid "Indonesian"
+msgstr ""
+
+msgid "Italian"
+msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Korean"
+msgstr ""
+
+msgid "Latvian"
+msgstr ""
+
+msgid "Lithuanian"
+msgstr ""
+
+msgid "Macedonian"
+msgstr ""
+
+msgid "Malaysian"
+msgstr ""
+
+msgid "Maltese"
+msgstr ""
+
+msgid "Norwegian"
+msgstr ""
+
+msgid "Polish"
+msgstr ""
+
+msgid "Portuguese"
+msgstr ""
+
+msgid "Rhaeto-Romanic"
+msgstr ""
+
+msgid "Romanian"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Sami"
+msgstr ""
+
+msgid "Serbian"
+msgstr ""
+
+msgid "Slovak"
+msgstr ""
+
+msgid "Slovenian"
+msgstr ""
+
+msgid "Sorbian"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Sutu"
+msgstr ""
+
+msgid "Swedish"
+msgstr ""
+
+msgid "Thai"
+msgstr ""
+
+msgid "Tsonga"
+msgstr ""
+
+msgid "Tswana"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""
+
+msgid "Ukrainian"
+msgstr ""
+
+msgid "Urdu"
+msgstr ""
+
+msgid "Venda"
+msgstr ""
+
+msgid "Vietnamese"
+msgstr ""
+
+msgid "Xhosa"
+msgstr ""
+
+msgid "Yiddish"
+msgstr ""
+
+msgid "Zulu"
+msgstr ""
+
+msgid "Saudi Arabia"
+msgstr ""
+
+msgid "Iraq"
+msgstr ""
+
+msgid "Egypt"
+msgstr ""
+
+msgid "Libya"
+msgstr ""
+
+msgid "Algeria"
+msgstr ""
+
+msgid "Morocco"
+msgstr ""
+
+msgid "Tunisia"
+msgstr ""
+
+msgid "Oman"
+msgstr ""
+
+msgid "Yemen"
+msgstr ""
+
+msgid "Syria"
+msgstr ""
+
+msgid "Jordan"
+msgstr ""
+
+msgid "Lebanon"
+msgstr ""
+
+msgid "Kuwait"
+msgstr ""
+
+msgid "U.A.E."
+msgstr ""
+
+msgid "Bahrain"
+msgstr ""
+
+msgid "Qatar"
+msgstr ""
+
+msgid "Taiwan"
+msgstr ""
+
+msgid "PRC"
+msgstr ""
+
+msgid "Hong Kong SAR"
+msgstr ""
+
+msgid "Singapore"
+msgstr ""
+
+msgid "Belgium"
+msgstr ""
+
+msgid "United States"
+msgstr ""
+
+msgid "United Kingdom"
+msgstr ""
+
+msgid "Australia"
+msgstr ""
+
+msgid "Canada"
+msgstr ""
+
+msgid "New Zealand"
+msgstr ""
+
+msgid "Ireland"
+msgstr ""
+
+msgid "South Africa"
+msgstr ""
+
+msgid "Jamaica"
+msgstr ""
+
+msgid "Belize"
+msgstr ""
+
+msgid "Trinidad"
+msgstr ""
+
+msgid "Switzerland"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Austria"
+msgstr ""
+
+msgid "Liechtenstein"
+msgstr ""
+
+msgid "Brazil"
+msgstr ""
+
+msgid "Portugal"
+msgstr ""
+
+msgid "Republic of Moldova"
+msgstr ""
+
+msgid "Lappish"
+msgstr ""
+
+msgid "Mexico"
+msgstr ""
+
+msgid "Guatemala"
+msgstr ""
+
+msgid "Costa Rica"
+msgstr ""
+
+msgid "Panama"
+msgstr ""
+
+msgid "Dominican Republic"
+msgstr ""
+
+msgid "Venezuela"
+msgstr ""
+
+msgid "Colombia"
+msgstr ""
+
+msgid "Peru"
+msgstr ""
+
+msgid "Argentina"
+msgstr ""
+
+msgid "Ecuador"
+msgstr ""
+
+msgid "Chile"
+msgstr ""
+
+msgid "Uruguay"
+msgstr ""
+
+msgid "Paraguay"
+msgstr ""
+
+msgid "Bolivia"
+msgstr ""
+
+msgid "El Salvador"
+msgstr ""
+
+msgid "Honduras"
+msgstr ""
+
+msgid "Nicaragua"
+msgstr ""
+
+msgid "Puerto Rico"
+msgstr ""
+
+msgid "Finland"
+msgstr ""
+
+msgid "Prev"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "links with this tag"
+msgstr ""
+
+msgid "add/remove this tag"
+msgstr ""
+
+msgid "URL:"
+msgstr ""
+
+msgid "Title:"
+msgstr ""
+
+msgid "Description:"
+msgstr ""
+
+msgid "Tags:"
+msgstr ""
+
+msgid "tags"
+msgstr ""
+
+msgid "The tags must be space-separated"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Configuration"
+msgstr ""
+
+msgid "Name:"
+msgstr ""
+
+msgid "Language:"
+msgstr ""
+
+msgid "Links by page:"
+msgstr ""
+
+msgid "Admin Password:"
+msgstr ""
+
+msgid "Repite Password:"
+msgstr ""
+
+msgid "Leave blank to not change the password"
+msgstr ""
+
+msgid "Modify"
+msgstr ""
+
+msgid "Edit the bookmark"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Go to home"
+msgstr ""
+
+msgid "Type your password"
+msgstr ""
+
+msgid "Password:"
+msgstr ""
+
+msgid "Tags: space-separated"
+msgstr ""
+
+msgid "Manage bookmarks"
+msgstr ""
+
+msgid "Add bookmark"
+msgstr ""
+
+msgid "Add a new bookmark"
+msgstr ""
+
+msgid "Change the configuration"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Logout from the system"
+msgstr ""
+
+msgid "Powered by "
+msgstr ""
+
+msgid "Feed"
+msgstr ""
+
+msgid "The Feed"
+msgstr ""
+
+msgid "What is sabros.us lite?"
+msgstr ""
+
+msgid "Control panel"
+msgstr ""
+
+msgid "Start session"
+msgstr ""
+
+msgid "There are"
+msgstr ""
+
+msgid "links. Showing from"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "Edit bookmark"
+msgstr ""
+
+msgid "at"
+msgstr ""
+
+msgid "m.d.y"
+msgstr ""
+
+msgid "sabros.us is a web-based bookmarking system to organize your bookmarks on your website. It is similar to del.icio.us in that you can manage your bookmarks online, but with sabros.us you can do it on your own website."
+msgstr ""
+
+msgid "sabros.us lite is a parallel project created by Pedro Santana and Victor Bracco that arose with the need to show the power and versatility of flavor.fwk"
+msgstr ""
+
+msgid "links with the tag "
+msgstr ""
+
+msgid ". Showing from"
+msgstr ""

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+	{includes}
+	<link rel="stylesheet" href="{conf.siteurl}/app/themes/{conf.current_theme}/css/default.css" type="text/css" />
+	<link rel="stylesheet" href="{conf.siteurl}/app/themes/{conf.current_theme}/css/base.css" type="text/css" />
+	<title>{title}</title> 
+</head>
+<body> 
+	<div id="container"> 
+		<div id="header"> 
+			<div id="header-in"> 
+				<a href="{conf.siteurl}"><h1>{conf.blogname}</h1></a>
+ 
+			</div> <!-- end #header-in --> 
+		</div> <!-- end #header --> 
+		<div id="content-wrap" class="clear rcol">  
+			<div class="column"> 
+				<div class="column-in"> 
+ 
+					<ul class="menu">
+					{block $links as $link}
+						<li><a href="{$link.link}">{$link.name}</a></li>
+					{/block}
+					</ul>
+ 
+				</div> <!-- end .column-in --> 
+			</div> <!-- end .column --> 
+ 
+			<div class="content"> 
+				<div class="content-in"> 
+ 
+					<h3>{busqueda}</h3>
+					{adsense}
+					{block $searches as $post}
+						<p class="ad"><a href="{conf.siteurl}/{$post.urlfriendly}">{$post.title}</a></p>
+					{/block}
+				</div> <!-- end .content-in --> 
+			</div> <!-- end .content --> 
+		</div> <!-- end #content-wrap --> 
+ 
+		<div class="clear"></div> 
+ 
+		<div id="footer"> 
+			<div id="footer-in"> 
+ 
+			</div> <!-- end #footer-in --> 
+		</div> <!-- end #footer --> 
+	</div> <!-- end div#container --> 
+</body>
+</html>

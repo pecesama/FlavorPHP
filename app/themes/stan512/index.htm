@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+	{includes}
+	<meta name="generator" content="Codice CMS" />
+	<link rel="stylesheet" href="{conf.siteurl}/app/themes/{conf.current_theme}/css/style.css" type="text/css" />	
+	<title>{conf.blogname}</title>
+</head>
+<body>
+	<div id="todo">
+		<div id="header">	
+			<h1><a href="{conf.siteurl}">{conf.blogname}</a></h1>
+			<h2>{conf.blogdescription}</h2>
+		</div><!-- header -->		
+		<div id="topnav">
+			<p>
+				<a href="{conf.siteurl}/">Inicio</a> | 
+				<a href="#sidebars">&iquest;Sidebar?</a> | 
+				<a href="#">RSS</a> | 
+				<a href="{conf.siteurl}/admin/login/">Login</a>
+			</p>
+		</div><!-- topnav -->
+		<div id="columnas" class="clearfix">
+			<div id="contenido">
+				{if !$single}
+					{if count($posts) > 0}
+						{block $posts as $post}
+							<div class="post">
+								<h3>
+									<a href="{conf.siteurl}/{$post.urlfriendly}" rel="bookmark" title="Enlace a {$post.title}">{$post.title}</a>
+								</h3>				
+								<div class="post_txt">
+									{$post.content}
+								</div>		
+								<div class="post_meta_com"> 
+									<p>Editar | <a href="{conf.siteurl}/{$post.urlfriendly}/#comments" rel="bookmark" title="Comentarios de {$post.title}">{$post.comments_count}</a>  &#187;</p>
+									{if $post.tags}
+										<p class="tags">
+											Tags: 									
+											{block $post.tags as $tag}
+												<a href="{conf.siteurl}/tag/{$tag.urlfriendly}">{$tag.tag}</a> /
+											{/block}
+											<br />
+										</p>
+									{/if}
+								</div><!-- post_meta_com -->
+								<div class="post_meta">
+									<p>Escrito por Usuario el Enero 17, 2009</p>
+								</div><!-- post_meta -->		
+							</div><!-- post -->		
+						{/block}		
+						{pagination}		
+					{else}
+						<h2 class="center">No se encontr&oacute; lo que buscabas :(</h2>
+						<p class="center">Lo sentimos, pero parece que lo que buscas no est&aacute; aqui.</p>				
+					{/if}
+				{else}
+					<div class="post">
+						<h3>{$post.title}</h3>
+						<div class="post_txt">
+							{$post.content}
+						</div>						
+						<div class="comentarios">
+							{if $comments}								
+							<h4 id="comments">{$comments_count} comentarios en "{post.title}"</h4>
+							<div class="commentlist">						
+								{block $comments as $comment}
+									<div class="comentario" id="comment-{$comment.ID}">
+										<img alt="" src="http://www.gravatar.com/avatar/{$comment.md5_email}?s=50" class="avatar avatar-50 photo" width="50" height="50">
+										<p class="comment_author">
+											<a href="{$comment.url}" {if !$comment.user_id} rel="external nofollow"{/if} class="url">{$comment.author}</a>
+										</p>
+										<div class="comment_meta commentmetadata">
+											<p>
+												<a href="{conf.siteurl}/{$post.urlfriendly}/#comment-{$comment.ID}">{$comment.created}</a>
+											</p>
+										</div>
+										<div class="comment_txt">
+											<p>{$comment.content}</p>
+										</div>						
+									</div>
+								{/block}
+							</div>
+							{/if}
+							<h4 class="respond">Deja un comentario</h4> 
+							<form action="{conf.siteurl}/index/addComment/{id}" method="post" id="commentform">
+								<p>
+									<label for="author">Nombre (requerido)</label>
+									<input name="author" id="author" value="{cookie.author}" size="22" tabindex="1" type="text">
+									{authorErr}
+								</p>
+								<p>
+									<label for="email">Email (requerido)</label>
+									<input name="email" id="email" value="{cookie.email}" size="22" tabindex="2" type="text">
+									{emailErr}
+								</p>
+								<p>
+									<label for="url">Website/Blog</label>
+									<input name="url" id="url" value="{cookie.url}" size="22" tabindex="3" type="text">
+									{urlErr}
+								</p>
+								<p>
+									<label>Comentario</label>
+									<textarea name="content" id="comment" cols="100" rows="10" tabindex="4"></textarea>
+									{contentErr}
+								</p>
+								<p>
+									<input id="submit" tabindex="5" value="Submit Comment" type="submit">
+								</p>
+							</form>			
+						</div>
+					</div>
+				{/if}
+			</div><!-- contenido -->
+			<div id="sidebars">
+				<div class="sidebar clearfix">		
+					<div id="linkcat-2" class="widget widget_links"><h4 class="widgettitle">Blogroll</h4>
+						<ul class="xoxo blogroll">
+							{block $links as $link}
+							<li><a href="{$link.link}">{$link.name}</a></li>
+							{/block}				
+						</ul>
+					</div>		
+					<div id="popular-posts" class="widget JAWPopularPostsWidget_widget"><h4 class="widgettitle">Columna 2</h4>
+						<ul class="xoxo blogroll">
+							{block $links as $link}
+							<li><a href="{$link.link}">{$link.name}</a></li>
+							{/block}				
+						</ul>
+					</div>		
+				</div>		
+				<div class="sidebar clearfix">
+					<div id="linkcat-2" class="widget widget_links"><h4 class="widgettitle">Otra fila</h4>
+						<ul class="xoxo blogroll">
+							{block $links as $link}
+							<li><a href="{$link.link}">{$link.name}</a></li>
+							{/block}				
+						</ul>
+					</div>
+				</div>
+			</div>	<!-- sidebars -->	
+			<div id="footer">
+				Gestionado con <a href="http://www.codice-cms.org/">Codice CMS</a> | 
+				Theme ported from  <a href="http://www.512megas.com/2009/01/tema-para-wordpress-stan512/">Stan512</a>
+			</div><!-- footer -->
+		</div><!-- columnas -->
+	</div>
+</body>
+</html>
