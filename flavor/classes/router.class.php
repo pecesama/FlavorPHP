@@ -25,8 +25,9 @@ class router{
 		$class = $controller."_controller";
 		$controller = new $class();
 
-		if(!is_callable(array($controller,$action)))
+		if(!is_callable(array($controller,$action))) {
 			$this->notFound();
+		}
 
 		$controller->action = $action;
 		$controller->params = $params;
@@ -77,8 +78,20 @@ class router{
 						$action = 'index';
 						$params = null;
 					}
-				}else
-					$this->notFound();
+				} else {					
+					if ($this->parts[0] == "index") {
+						//die("Soy un flavor recien instalado");
+						ob_start();
+						$path = Absolute_Path."app".DIRSEP."views/start/index.php";
+						include ($path);
+						$contents = ob_get_contents();
+						ob_end_clean();
+						echo $contents;
+						die();
+					} else {
+						$this->notFound();
+					}
+				}
 			}
 		}else{
 			$controller = "index";

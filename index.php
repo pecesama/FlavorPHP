@@ -4,6 +4,8 @@
   *
   * @version SVN
   * @author Pedro Santana <pecesama_at_gmail_dot_com>
+  * @author Victor Bracco <vbracco_at_gmail_dot_com>
+  * @author Victor de la Rocha <vyk2rr_at_gmail_dot_com>
   */
 
 error_reporting (E_ALL);
