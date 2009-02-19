@@ -33,6 +33,11 @@ class html extends singleton {
 		return $css;
 	}
 	
+	public function includeCssAbsolute($css) {
+		$css = "<link rel=\"stylesheet\" href=\"".$this->path."app/libs/".$css.".css\" type=\"text/css\" />\n";
+		return $css;
+	}
+	
 	public function includeJs($js) {		
 		$js = "<script type=\"text/javascript\" src=\"".$this->path."app/libs/js/".$js.".js\"></script>\n";
 		return $js;
@@ -134,7 +139,7 @@ class html extends singleton {
 	}
 	
 	public function textArea($name, $value="", $html_attributes=""){
-		$html = "<textarea name=\"".$name."\" ";
+		$html = "<textarea id=\"".$name."\" name=\"".$name."\" ";
 		$html .= $html_attributes;
 		$html .= ">";
 		$html .= $value;
