@@ -7,12 +7,16 @@ abstract class controller {
 	protected $cookie;
 	protected $pagination;	
 	protected $l10n;
+	protected $html;
+	protected $ajax;
 	protected $themes;
 	protected $view;
 	protected $path;
 	protected $tfl= "";
 	public $action;
 	public $params;
+	public $data;
+	public $isAjax;
 
 	public function __construct() {		
 		$this->registry = registry::getInstance();		
@@ -22,14 +26,22 @@ abstract class controller {
 		$this->themes = $this->registry["themes"];
 		$this->path = $this->registry["path"];
 		$this->l10n = l10n::getInstance();
+		$this->html = html::getInstance();
+		$this->ajax = new ajax();
 		$this->pagination = pagination::getInstance();
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			$this->data = $_POST;
+		} else {
+			$this->data = NULL;
+		}
+		$this->isAjax = $this->isAjax();
 	}
 
 	abstract public function index($id=NULL);
 		
 	public function beforeRender() {}
 	public function afterRender() {}
-	
+		
 	public function redirect($url, $intern = true) {
 		print_r($this->registry->validateErrors);
 		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
@@ -87,6 +99,12 @@ abstract class controller {
 	protected function endsWith($str, $sub) {
 		return (substr($str, strlen($str) - strlen($sub)) == $sub);
 	}
+	
+	private function isAjax() {
+		//var_dump($_SERVER);
+		//die();
+		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']=="XMLHttpRequest");
+	} 
 	
 }
 ?>

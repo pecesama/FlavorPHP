@@ -79,8 +79,7 @@ class router{
 						$params = null;
 					}
 				} else {					
-					if ($this->parts[0] == "index") {
-						//die("Soy un flavor recien instalado");
+					if ($this->parts[0] == "index") {						
 						ob_start();
 						$path = Absolute_Path."app".DIRSEP."views/start/index.php";
 						include ($path);
