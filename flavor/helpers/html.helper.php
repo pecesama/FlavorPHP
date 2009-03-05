@@ -9,7 +9,7 @@ class html extends singleton {
 	
 	public function __construct() {
 		$this->registry = registry::getInstance();
-		$this->path = $this->registry["path"];		
+		$this->path = $this->registry["path"];
 	}
 	
 	public function setType($type) {
@@ -72,25 +72,40 @@ class html extends singleton {
 		return $atom;
 	}
 	
-	public function validateError($field) {
+	public function validateError($field) {		
 		$html = "";
-		$this->validateErrors = (isset($_SESSION["flavor_php_session"]["validateErrors"])) ? $_SESSION["flavor_php_session"]["validateErrors"] : NULL ;		
+		$this->validateErrors = (isset($_SESSION["flavor_php_session"]["validateErrors"])) ? $_SESSION["flavor_php_session"]["validateErrors"] : NULL ;
 		if (!is_null($this->validateErrors)) {			
 			if ($val = $this->findInArray($this->validateErrors, $field) ) {	
-				$html = "<div class=\"error\">".$val."</div>";
+				$html = "<div class=\"error\">".$val."</div>";				
+				$this->unsetError($field);
 			}
 		}		
 		return $html;
 	}
 	
+	private function unsetError($field){		
+		if(is_array($_SESSION["flavor_php_session"]["validateErrors"])){
+			foreach($_SESSION["flavor_php_session"]["validateErrors"] as $k => $v){
+				if(is_array($v)){
+					foreach($v as $kk => $vv){
+						if($kk == $field){
+							unset($_SESSION["flavor_php_session"]["validateErrors"][$k][$kk]);
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
 	private function findInArray($arr, $str) {
 		$response = "";
-		foreach ($this->validateErrors as $key=>$element){
+		foreach ($arr as $key=>$element){
 			foreach ($element as $name=>$value){
 				if ($name == $str) {					
 					$response = $value['message'];
 				}
-				unset($_SESSION["flavor_php_session"]["validateErrors"][$key]);
 			}    
 		}
 		return $response;
