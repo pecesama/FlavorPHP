@@ -8,8 +8,10 @@ class models extends activeRecord {
 	
 	public function __construct() {
 		parent::__construct();
+		
 		$this->validate = NULL;
 		$this->filter = NULL;
+		
 		if (!defined('VALID_NOT_EMPTY')) { 
 			define('VALID_NOT_EMPTY', '/.+/'); 
 		}
@@ -21,7 +23,7 @@ class models extends activeRecord {
 		}
 		if (!defined('VALID_URL')) { 
 			define('VALID_URL', '/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}((:[0-9]{1,5})?\/.*)?$/i'); 
-		}		
+		}
 	}
 	
 	public function doFilter($datos) {
@@ -50,7 +52,10 @@ class models extends activeRecord {
 	
 	public function validates($datos) {
 		if(!$this->validate){ return true; }
-		$this->register->datos = $datos;
+		
+		#$this->register->datos = $datos; // ¿register?
+		$this->registry->datos = $datos;
+		
 		foreach ($datos as $campo => $valor) {
 			if(array_key_exists($campo, $this->validate)) {
 				if((!isset($this->validate[$campo]['required']) || $this->validate[$campo]['required']==false) && empty($valor)){
