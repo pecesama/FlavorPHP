@@ -23,7 +23,7 @@ class models extends activeRecord {
 		}
 		if (!defined('VALID_URL')) { 
 			define('VALID_URL', '/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}((:[0-9]{1,5})?\/.*)?$/i'); 
-		}
+		}		
 	}
 	
 	public function doFilter($datos) {
@@ -52,10 +52,7 @@ class models extends activeRecord {
 	
 	public function validates($datos) {
 		if(!$this->validate){ return true; }
-		
-		#$this->register->datos = $datos; // ¿register?
 		$this->registry->datos = $datos;
-		
 		foreach ($datos as $campo => $valor) {
 			if(array_key_exists($campo, $this->validate)) {
 				if((!isset($this->validate[$campo]['required']) || $this->validate[$campo]['required']==false) && empty($valor)){
@@ -87,6 +84,7 @@ class models extends activeRecord {
 				}
 			}
 		}
+		
 		if (empty($this->validateErrors)) {
 			return true;
 		} else {

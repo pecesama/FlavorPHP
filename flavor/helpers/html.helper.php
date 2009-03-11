@@ -131,6 +131,21 @@ class html extends singleton {
 	public function image($name, $alt=""){
 		return "<img src=\"".$this->path.'app/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
 	}		
+
+	public function imageLink($text, $url="", $html_attributes="", $name, $alt=""){
+		$html = "<a href=\"".$this->path.$url;
+		$html .= "\"";		
+		$html .= " $html_attributes ";		
+		$html .= ">";
+		$html .= "<img src=\"".$this->path.'app/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
+		$html .= "</a>";	
+		return $html;
+	}	
+
+	public function imageLinkConfirm($text, $url="", $name, $alt=""){
+		$html = $this->imageLink($text,$url,"onclick=\"return confirm('Are you sure?');\"",$name,$alt);
+		return $html;
+	}	
 	
 	public function checkBox($name, $html_attributes=""){
 		$html = "<input type=\"checkbox\" name=\"".$name."\"";

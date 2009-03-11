@@ -100,6 +100,7 @@ class activeRecord implements ArrayAccess {
 				$id = $this->create($this->record);
 				$this->record[$this->keyField] = $id;
 				$this->isNew = false;
+
 				return $id;
 			} else {
 				return $this->update();
@@ -160,7 +161,7 @@ class activeRecord implements ArrayAccess {
 	}	
 	
 	public function findBy($field, $value) { 
-		
+
 		$sql = "SELECT * FROM ".$this->table." WHERE ".$field."='".$value."'";
 		$rs = $this->db->query($sql);
 		$row = $this->db->fetchRow();
