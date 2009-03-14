@@ -43,15 +43,15 @@ abstract class controller {
 	public function afterRender() {}
 		
 	public function redirect($url, $intern = true) {
-		print_r($this->registry->validateErrors);
 		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
 		
-		if ($intern) {			
+		if ($intern) {
 			$url = (!$this->endsWith($url, "/")) ? $url."/" : $url ;
 			$url = $this->path.$url;
 		} else {
 			$url = $url;
 		}
+		
 		header("Location: ".$url);
 		exit();
 	}
