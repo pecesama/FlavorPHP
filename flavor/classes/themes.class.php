@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 	Class name: Themes
 	Class autor: Victor De la Rocha http//mis-algoritmos.com/themes-class
@@ -8,12 +8,14 @@ class themes{
 	protected $registry;
 	protected $path;
 	protected $l10n;
+	protected $html;
 
 	protected $output;
 	protected $vars=array(); //variable para apilar las variables que se asignan a la plantilla
 	
 	public function __construct(){
 		$this->l10n = l10n::getInstance();
+		$this->html = html::getInstance();
 	}
 	
 	public function __set($name, $value){
@@ -44,10 +46,10 @@ class themes{
 		$output = file_get_contents($file);
 		$this->output = $output;
 		$this->registrar_vars();
-		$this->__();
+		$this->l10n();
 		$this->eval_control_structures();
-
-		//evaluate All as PHP code
+		$this->runHelpers();
+		
 		ob_start();eval($this->output);
 		$this->output = ob_get_clean();
 	}
@@ -109,17 +111,19 @@ class themes{
 		//replacing  {$array.key} format by $this->vars['array']['key']  
 		$patrones = array(
 			'/{\$([^ \.}]+)}/s',
-			'/{\$([^ \.}]+)\.([^ \.}]+)}/s'
+			'/{\$([^ \.}]+)\.([^ \.}]+)}/s',
+			'/{\$([^ \.}]+)\.([^ \.}]+)\.([^ \.}]+)}/s'
 		);
 		$reemplazos = array(
 			"{\$this->vars['$1']}",
-			"{\$this->vars['$1']['$2']}"
+			"{\$this->vars['$1']['$2']}",
+			"{\$this->vars['$1']['$2']['$3']}"
 		);
 		$this->output = preg_replace($patrones, $reemplazos, $this->output);
 	}
 	
 	//Utiliza gettext
-	protected function __(){
+	protected function l10n(){
 		$patron = "/{__\((?:'|\")([^\)]+?)(?:'|\")\)}/s"; 
 		preg_match_all($patron,$this->output,$out);
 		
@@ -138,6 +142,42 @@ class themes{
 	protected function unquotemeta($str){
 		return $str;
 	}
+	
+	protected function runHelpers(){
+		# {helper::html->function()}
+		/* 
+		Dentro de Array[0]
+			Estos no sirven:
+			- [1] - instrucción completa.
+			- [2] - string "helper".
+			Estos son los que sirven:
+			- [2] - helper
+			- [3] - action
+			- [4] - params (string)
+		*/
+		
+		$function = "
+			unset(\$matches[1]);
+			unset(\$matches[0]); 
+			
+			if(file_exists(Absolute_Path.'flavor'.DIRSEP.'helpers'.DIRSEP.\$matches[2].\".helper.php\")){
+				//eval(\"\\\$helper = \" . \$matches[2] . \"::getInstance();\");
+				\$helper = \$matches[2];
+				\$action = \$matches[3];
+				\$params = \$matches[4];
+				
+				//\$exec_helper = \"\\\$out = \\\$helper->\\\$action( \" . \$params . \" );\";
+				//eval(\$exec_helper);
+				
+				\$out = \"\\\"; echo \\\$this->\$helper->\$action( \" . stripslashes(\$params) . \" ); echo \\\"\";
+				
+				
+				return \$out;
+			}
+		";
+		
+		$regexp = "/{(\w+)::(\w+)->(\w+)\((.+)?\)}/";
+		$this->output = preg_replace_callback($regexp,create_function('$matches',$function),$this->output);
+	}
 
 }
-?>
