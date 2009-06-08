@@ -204,7 +204,7 @@ class html extends singleton {
 	}
 	
 	public function select($name, $values, $selected=""){
-		$html = "<select name=\"".$name."\">\n";
+		$html = "<select name=\"".$name."\" id=\"".$name."\">\n";
 		foreach ($values as $key=>$value){
 			$html .= "\t<option ";
 			if (is_numeric($key)){
