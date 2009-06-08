@@ -5,7 +5,7 @@ abstract class controller {
 	protected $registry;
 	protected $session;
 	protected $cookie;
-	protected $pagination;	
+	protected $pagination;
 	protected $l10n;
 	protected $html;
 	protected $ajax;
@@ -18,8 +18,8 @@ abstract class controller {
 	public $data;
 	public $isAjax;
 
-	public function __construct() {		
-		$this->registry = registry::getInstance();		
+	public function __construct() {
+		$this->registry = registry::getInstance();
 		$this->session = $this->registry["session"];
 		$this->cookie = $this->registry["cookie"];
 		$this->view = $this->registry["views"];
@@ -57,27 +57,31 @@ abstract class controller {
 	}
 	
 	public function render($view=NULL) {
-		if (is_null($view)) {
-			$view = $this->action;
+		if($this->html->type == "views"){
+			if (is_null($view)) {
+				$view = $this->action;
+			}
+			$this->beforeRender();
+			$this->view->content_for_layout = $this->view->fetch($this->controllerName().".".$view);
+			$this->view->title_for_layout = $this->tfl;
+			echo $this->view->fetch("", "layout");
+			$this->afterRender();
+			exit();
+		}else{
+			$this->renderTheme($this->html->type);
 		}
-		$this->beforeRender();
-		$this->view->content_for_layout = $this->view->fetch($this->controllerName().".".$view);
-		$this->view->title_for_layout = $this->tfl;
-		echo $this->view->fetch("", "layout");
-		$this->afterRender();
-		exit();
 	}
 	
 	public function renderTheme($theme,$file='index.htm'){
 		$this->beforeRender();
-		$path = Absolute_Path."app".DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";			
+		$path = Absolute_Path."app".DIRSEP.$theme.DIRSEP."$file";
 		echo $this->themes->fetch($path);
 		$this->afterRender();
 		exit;
 	}
 
 	public function fetchTheme($theme,$file='index.htm'){
-		$path = Absolute_Path."app".DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";			
+		$path = Absolute_Path."app".DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";
 		return $this->themes->fetch($path);
 	}
 	

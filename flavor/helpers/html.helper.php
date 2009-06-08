@@ -1,48 +1,55 @@
 <?php
 
 class html extends singleton {
-	
+
 	protected $registry;
 	protected $validateErrors;
 	protected $path;
-	protected $type = "views";
-	
+	public $type = "views";
+
 	public function __construct() {
 		$this->registry = registry::getInstance();
 		$this->path = $this->registry["path"];
 	}
-	
-	public function setType($type) {
-		$this->type = $type;
-		if($this->type!='views'){
-			$this->type='themes/'.$this->type;
-		}
+
+	public function useTheme($name) {
+		$this->type = $name;
+		$this->type= "themes/".$this->type;
 	}
-	
+
 	public static function getInstance() {
 		return parent::getInstance(get_class());
-	}	
-	
-	public function charsetTag($charSet) {		
+	}
+
+	public function charsetTag($charSet) {
 		$charSet = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$charSet."\"/>\n";
 		return $charSet;
 	}
-	
+
 	public function includeCss($css) {
 		$css = "<link rel=\"stylesheet\" href=\"".$this->path."app/".$this->type."/css/".$css.".css\" type=\"text/css\" />\n";
 		return $css;
 	}
-	
+
 	public function includeCssAbsolute($css) {
 		$css = "<link rel=\"stylesheet\" href=\"".$this->path."app/libs/".$css.".css\" type=\"text/css\" />\n";
 		return $css;
 	}
-	
-	public function includeJs($js) {		
+
+	public function includeJs($js) {
+		if($this->type == "views"){
+			$js = "<script type=\"text/javascript\" src=\"" . $this->path . "app/libs/js/" . $js . ".js\"></script>\n";
+		}else{
+			$js = "<script type=\"text/javascript\" src=\"" . $this->path . "app/" . $this->type . "/js/" . $js . ".js\"></script>\n";
+		}
+		return $js;
+	}
+
+	public function includeJsAbsolute($js) {
 		$js = "<script type=\"text/javascript\" src=\"".$this->path."app/libs/js/".$js.".js\"></script>\n";
 		return $js;
 	}
-	
+
 	public function includePluginFacebox() {
 		$js = $this->includeCss("facebox");
 		$js .= "\t<script type=\"text/javascript\">\n";
@@ -56,35 +63,36 @@ class html extends singleton {
 	  	$js .= "\t</script>\n";
 		return $js;
 	}
-	
-	public function includeFavicon($icon="favicon.ico") {		
+
+	public function includeFavicon($icon="favicon.ico") {
 		$favicon = "<link rel=\"shortcut icon\" href=\"".$this->path.'app/'.$this->type."/images/".$icon."\" />\n";
 		return $favicon;
 	}
-	
-	public function includeRSS($rssUrl="feed/rss/") {		
+
+	public function includeRSS($rssUrl="feed/rss/") {
 		$rss = "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS 2.0\" href=\"".$this->path.$rssUrl."\" />\n";
 		return $rss;
 	}
-	
-	public function includeATOM($atomUrl="feed/atom/") {		
+
+	public function includeATOM($atomUrl="feed/atom/") {
 		$atom = "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"Atom 1.0\" href=\"".$this->path.$atomUrl."\" />\n";
 		return $atom;
 	}
-	
-	public function validateError($field) {		
+
+	public function validateError($field) {
 		$html = "";
 		$this->validateErrors = (isset($_SESSION["flavor_php_session"]["validateErrors"])) ? $_SESSION["flavor_php_session"]["validateErrors"] : NULL ;
-		if (!is_null($this->validateErrors)) {			
-			if ($val = $this->findInArray($this->validateErrors, $field) ) {	
-				$html = "<div class=\"error\">".$val."</div>";				
+		if (!is_null($this->validateErrors)) {
+			if ($val = $this->findInArray($this->validateErrors, $field) ) {
+				$html = "<div class=\"error\">".$val."</div>";
 				$this->unsetError($field);
 			}
 		}		
 		return $html;
 	}
-	
-	private function unsetError($field){		
+
+	/* Esta función es para ser utilizada por validateError($field){...} */
+	private function unsetError($field){
 		if(is_array($_SESSION["flavor_php_session"]["validateErrors"])){
 			foreach($_SESSION["flavor_php_session"]["validateErrors"] as $k => $v){
 				if(is_array($v)){
@@ -103,23 +111,27 @@ class html extends singleton {
 		$response = "";
 		foreach ($arr as $key=>$element){
 			foreach ($element as $name=>$value){
-				if ($name == $str) {					
+				if ($name == $str) {
 					$response = $value['message'];
 				}
 			}    
 		}
 		return $response;
 	}
-		
-	public function formPost($url){
-		return "<form action=\"".$this->path.$url."\" method=\"post\">";
+
+	public function form($url, $method="POST" , $html_attributes = ""){
+		return "<form action=\"".$this->path.$url."\" method=\"" . $method. "\" " . $html_attributes .">";
 	}
 	
-	public function linkTo($text, $url="", $html_attributes="") {		
-		$html = "<a href=\"".$this->path.$url;
-		$html .= "\"";		
-		$html .= " $html_attributes ";		
-		$html .= ">".$text."</a>";		
+	public function formAbsolute($url, $method="POST" , $html_attributes = ""){
+		return "<form action=\"".$url."\" method=\"" . $method. "\" " . $html_attributes .">";
+	}
+
+	public function linkTo($text, $url="", $html_attributes="", $absolute = false) {
+		$html = "<a href=\"".(!$absolute?$this->path:'').$url;
+		$html .= "\"";
+		$html .= " $html_attributes ";
+		$html .= ">".$text."</a>";
 		return $html;
 	}
 
@@ -127,44 +139,44 @@ class html extends singleton {
 		$html = $this->linkTo($text, $url, "onclick=\"return confirm('Are you sure?');\"");
 		return $html;
 	}
-	
+
 	public function image($name, $alt=""){
 		return "<img src=\"".$this->path.'app/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
-	}		
+	}
 
 	public function imageLink($text, $url="", $html_attributes="", $name, $alt=""){
 		$html = "<a href=\"".$this->path.$url;
-		$html .= "\"";		
-		$html .= " $html_attributes ";		
+		$html .= "\"";
+		$html .= " $html_attributes ";
 		$html .= ">";
 		$html .= "<img src=\"".$this->path.'app/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
-		$html .= "</a>";	
+		$html .= "</a>";
 		return $html;
-	}	
+	}
 
 	public function imageLinkConfirm($text, $url="", $name, $alt=""){
 		$html = $this->imageLink($text,$url,"onclick=\"return confirm('Are you sure?');\"",$name,$alt);
 		return $html;
-	}	
-	
+	}
+
 	public function checkBox($name, $html_attributes=""){
 		$html = "<input type=\"checkbox\" name=\"".$name."\"";
-		$html .= $html_attributes;				
-		$html .= " />\n";			
+		$html .= $html_attributes;
+		$html .= " />\n";
 		return $html;
 	}
 		
 	public function radioButton($name, $value, $html_attributes=""){
-		$html = "<input type=\"radio\" value=\"".$value."\" name=\"".$name."\" ";		
+		$html = "<input type=\"radio\" value=\"".$value."\" name=\"".$name."\" ";
 		$html .= $html_attributes;
-		$html .= " />";			
+		$html .= " />";
 		return $html;
 	}
 	
 	public function textField($name, $html_attributes=""){
 		$html = "<input type=\"text\" name=\"".$name."\" id=\"".$name."\" ";
 		$html .= $html_attributes;
-		$html .= " />";		
+		$html .= " />";
 		return $html;
 	}
 	
@@ -173,26 +185,26 @@ class html extends singleton {
 		$html .= $html_attributes;
 		$html .= ">";
 		$html .= $value;
-		$html .= "</textarea>";		
+		$html .= "</textarea>";
 		return $html;
 	}
 	
 	public function hiddenField($name, $html_attributes=""){
 		$html = "<input type=\"hidden\" name=\"".$name."\"";
 		$html .= $html_attributes;
-		$html .= " />";		
+		$html .= " />";
 		return $html;
 	}
 	
 	public function passwordField($name, $html_attributes=""){
 		$html = "<input type=\"password\" name=\"".$name."\" ";
 		$html .= $html_attributes;
-		$html .= " />";		
+		$html .= " />";
 		return $html;
 	}
 	
 	public function select($name, $values, $selected=""){
-		$html = "<select name=\"".$name."\">\n";		
+		$html = "<select name=\"".$name."\">\n";
 		foreach ($values as $key=>$value){
 			$html .= "\t<option ";
 			if (is_numeric($key)){
@@ -204,8 +216,7 @@ class html extends singleton {
 			}
 			$html .= ">$value</option>\n";
 		}		
-		$html .= "</select>\n";		
+		$html .= "</select>\n";
 		return $html;
 	}
 }
-?>
