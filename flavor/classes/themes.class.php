@@ -176,8 +176,7 @@ class themes{
 			}
 		";
 		
-		$regexp = "/{(\w+)::(\w+)->(\w+)\((.+)?\)}/";
+		$regexp = "/{(helper)::(\w+)->(\w+)\((.+?)?\)}/";
 		$this->output = preg_replace_callback($regexp,create_function('$matches',$function),$this->output);
 	}
-
 }
