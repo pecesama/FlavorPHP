@@ -104,7 +104,7 @@ abstract class controller {
 		return (substr($str, strlen($str) - strlen($sub)) == $sub);
 	}
 	
-	private function isAjax() {
+	/*Why private??*/ function isAjax() {
 		//var_dump($_SERVER);
 		//die();
 		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']=="XMLHttpRequest");
