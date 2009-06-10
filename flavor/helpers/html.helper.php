@@ -21,6 +21,11 @@ class html extends singleton {
 		return parent::getInstance(get_class());
 	}
 
+	public function includeCanonical($url = ""){
+		$canonical = "<link rel=\"canonical\" href=\"".$this->path.$url."\" />";
+		return $canonical;
+	}
+	
 	public function charsetTag($charSet) {
 		$charSet = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".$charSet."\"/>\n";
 		return $charSet;
@@ -204,7 +209,7 @@ class html extends singleton {
 	}
 	
 	public function select($name, $values, $selected=""){
-		$html = "<select name=\"".$name."\" id=\"".$name."\">\n";
+		$html = "<select name=\"".$name."\">\n";
 		foreach ($values as $key=>$value){
 			$html .= "\t<option ";
 			if (is_numeric($key)){
