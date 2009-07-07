@@ -1,7 +1,20 @@
 <?php
-
+/**
+ * CacheFile Class
+ * 
+ * Clase que implementa un metodo de chacheo especifico, en este caso en archivos.
+ *
+ * @package Cache
+ **/
 class cacheFile implements ArrayAccess {
 
+	/**
+	 * Retorna el elemento bajo la $key elegida
+	 *
+	 * @param string $key
+	 * @param integer $expiration optional, sino se usa el valor por defecto definido en {@link Cache}
+	 * @return mixed
+	 **/
 	public function get($key, $expiration = false){
 		if (! $expiration) {
 			$expiration = Cache::CACHE_TIME;
@@ -17,7 +30,12 @@ class cacheFile implements ArrayAccess {
 		}
 		return false;
 	}
-
+	/**
+	 * Asigna el objeto a una posicion unica del cache
+	 *
+	 * @return void
+	 * @author /bin/bash: niutil: command not found
+	 **/
 	public function set($key, $value){
 		$cacheDir = $this->getCacheDir($key);
 		$file = $this->getCacheFile($key);
@@ -38,6 +56,12 @@ class cacheFile implements ArrayAccess {
 		$this->removeLock($file);
 	}
 
+	/**
+	 * Elimina una entrada en el cache
+	 *
+	 * @return void
+	 * @throws Exception Cuando no se puede eliminar el archivo del cache correspondiente
+	 **/
 	public function delete($key){
 		$file = $this->getCacheFile($key);
 		if (! @unlink($file)) {
@@ -62,10 +86,20 @@ class cacheFile implements ArrayAccess {
 		@unlink($cacheFile . '.lock');
 	}
 	
+	/**
+	 * Determina si un archivo de cache esta bloqueado para su escritura
+	 *
+	 * @return boolean
+	 **/
 	function isLocked($cacheFile){
 		return file_exists($cacheFile . '.lock');
 	}
-	
+
+	/**
+	 * Genera un tiempo de espera para asegurarse de que el archivo se haya escrito completamente
+	 *
+	 * @return void
+	 **/
 	private function waitForLock($cacheFile){
 		$tries = 0;
 		// wainting to the file to be fully written
