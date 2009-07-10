@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 	Class name: Themes
 	Class autor: Victor De la Rocha http//mis-algoritmos.com/themes-class
@@ -148,7 +148,7 @@ class themes{
 		/* 
 		Dentro de Array[0]
 			Estos no sirven:
-			- [1] - instrucción completa.
+			- [1] - instrucci�n completa.
 			- [2] - string "helper".
 			Estos son los que sirven:
 			- [2] - helper
