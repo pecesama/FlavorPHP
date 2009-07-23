@@ -161,8 +161,17 @@ class activeRecord implements ArrayAccess {
 	}	
 	
 	public function findBy($field, $value) { 
-
-		$sql = "SELECT * FROM ".$this->table." WHERE ".$field."='".$value."'";
+		if(is_array($field)){
+			$where = "";
+			foreach($field as $k=>$v){
+				$where .= $field[$k]."='".$this->db->sql_escape($value[$k])."' AND ";
+			}
+			$where = "(".substr($where,0,-5).")";
+			
+			$sql = "SELECT * FROM ".$this->table." WHERE ".$where." LIMIT 1";
+		}else{
+			$sql = "SELECT * FROM ".$this->table." WHERE ".$field."='".$this->db->sql_escape($value)."' LIMIT 1";
+		}
 		$rs = $this->db->query($sql);
 		$row = $this->db->fetchRow();
 		
