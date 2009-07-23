@@ -183,14 +183,14 @@ class activeRecord implements ArrayAccess {
 	
 	public function findAllBy($field, $value){
 		$sql = "SELECT * FROM ".$this->table." WHERE ".$field."='".$value."'";
-		$rs = $this->db->query($sql);
-		$row = $this->db->fetchRow();
 		
-		$this->record = $row;
+		$rs = $this->db->query($sql);
+		
 		$this->isNew = false;
 		
 		$rows = array();
 		while($row = $this->db->fetchRow()) $rows[] = $row;
+		
 		return $rows;
 	}
 	
