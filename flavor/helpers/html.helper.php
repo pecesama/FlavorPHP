@@ -14,7 +14,7 @@ class html extends singleton {
 
 	public function useTheme($name) {
 		$this->type = $name;
-		$this->type= "themes".DIRSEP.$this->type;
+		$this->type= "themes/".$this->type;
 	}
 
 	public static function getInstance() {
