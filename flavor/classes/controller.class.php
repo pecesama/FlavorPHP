@@ -25,6 +25,7 @@ abstract class controller {
 		$this->view = $this->registry["views"];
 		$this->themes = $this->registry["themes"];
 		$this->path = $this->registry["path"];
+		$this->debug = $this->registry["debug"];
 		$this->l10n = l10n::getInstance();
 		$this->html = html::getInstance();
 		$this->ajax = new ajax();
@@ -64,8 +65,9 @@ abstract class controller {
 			$this->beforeRender();
 			$this->view->content_for_layout = $this->view->fetch($this->controllerName().".".$view);
 			$this->view->title_for_layout = $this->tfl;
-			echo $this->view->fetch("", "layout");
+			echo $this->showDebug().$this->view->fetch("", "layout");
 			$this->afterRender();
+			$this->debug->clearLogs();
 			exit();
 		}else{
 			$this->renderTheme($this->html->type);
@@ -102,6 +104,12 @@ abstract class controller {
 	
 	protected function endsWith($str, $sub) {
 		return (substr($str, strlen($str) - strlen($sub)) == $sub);
+	}
+	
+	protected function showDebug(){
+		if ($this->debug->isEnabled()) {
+			return $this->debug->show();
+		}else return '';
 	}
 	
 	/*Why private??*/ function isAjax() {

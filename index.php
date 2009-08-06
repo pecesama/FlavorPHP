@@ -89,6 +89,9 @@ try {
 	$router = new router();
 	$registry->router = $router;
 	
+	$debug = debug::getInstance();
+	$registry->debug = $debug;
+	
 	$registry->validateErrors = array();
 
 	$router->dispatch(); // Here starts the party
