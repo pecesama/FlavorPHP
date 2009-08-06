@@ -79,7 +79,7 @@ class debug extends singleton{
 		$session = $_SESSION;
 		$cockie  = $_COOKIE;
 		$server =  $_SERVER;
-		if(count($_SESSION['flavor_php_session']['debug_logs']) > 0){
+		if(isset($_SESSION['flavor_php_session']['debug_logs']) && count($_SESSION['flavor_php_session']['debug_logs']) > 0){
 			foreach($_SESSION['flavor_php_session']['debug_logs'] as $key=>$var){
 				$this->data[] = array('title'=>$var['title'],'value'=>$var['value']);
 			}
@@ -88,6 +88,7 @@ class debug extends singleton{
 			$this->data[] = array('title'=>$var,'value'=>(print_r(${strtolower($var)},1)));
 		}
 	}
+	
 	public function clearLogs(){
 		unset($_SESSION['flavor_php_session']['debug_logs']);
 	}
