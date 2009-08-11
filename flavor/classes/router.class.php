@@ -79,17 +79,18 @@ class router{
 						$params = null;
 					}
 				} else {					
-					if ($this->parts[0] == "index") {						
-						ob_start();
+					if ($this->parts[0] == "index") {
 						$path = Absolute_Path."app".DIRSEP."views/start/index.php";
-						include ($path);
-						$contents = ob_get_contents();
-						ob_end_clean();
-						echo $contents;
-						die();
-					} else {
-						$this->notFound();
+						if(file_exists($path)){
+							ob_start();
+							include ($path);
+							$contents = ob_get_contents();
+							ob_end_clean();
+							echo $contents;
+							exit;
+						}
 					}
+					$this->notFound();
 				}
 			}
 		}else{
