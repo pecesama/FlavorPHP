@@ -48,14 +48,14 @@ class views {
 	public function fetch($name, $type = NULL) {
 		
 		if ($type == "element") {
-			$path = Absolute_Path."app".DIRSEP."views".DIRSEP."elements".DIRSEP.$name.".php";
+			$path = Absolute_Path.APPDIR.DIRSEP."views".DIRSEP."elements".DIRSEP.$name.".php";
 			$errorMsg = "The <strong>element</strong> '<em>".$name."</em>' does not exist.";
 		} elseif ($type == "layout") {
-			$path = Absolute_Path."app".DIRSEP."views".DIRSEP."layouts".DIRSEP.$this->layout.".php";			
+			$path = Absolute_Path.APPDIR.DIRSEP."views".DIRSEP."layouts".DIRSEP.$this->layout.".php";			
 			$errorMsg = "The <strong>layout</strong> '<em>".$this->layout."</em>' does not exist.";
 		} else {
 			$route = explode(".", $name);
-			$path = Absolute_Path."app".DIRSEP."views".DIRSEP.$route[0].DIRSEP.$route[1].".php";
+			$path = Absolute_Path.APPDIR.DIRSEP."views".DIRSEP.$route[0].DIRSEP.$route[1].".php";
 			$errorMsg = "The <strong>view</strong> '<em>".$name."</em>' does not exist.";
 		}
 

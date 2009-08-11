@@ -16,6 +16,7 @@ if(!version_compare(PHP_VERSION, '5.2.0', '>=' ) ) {
 
 define('DIRSEP', DIRECTORY_SEPARATOR);
 define('Absolute_Path', dirname(__FILE__).DIRSEP);
+define('APPDIR','app');
 
 $configFile = Absolute_Path.'config.php';
 
@@ -30,10 +31,10 @@ function __autoload($className) {
 		Absolute_Path.'flavor'.DIRSEP.'classes'.DIRSEP.$className.'.class.php', // Flavor classes
 		Absolute_Path.'flavor'.DIRSEP.'interfaces'.DIRSEP.$className.'.interface.php', // maybe we want an interface
 		Absolute_Path.'flavor'.DIRSEP.'helpers'.DIRSEP.$className.'.helper.php', // maybe we want a helper
-		Absolute_Path.'app'.DIRSEP.$className.'.php', // maybe we want appcontroller or appviews
-		Absolute_Path.'app'.DIRSEP."controllers".DIRSEP.$className.'.php', // maybe we want a controller
-		Absolute_Path.'app'.DIRSEP.'models'.DIRSEP.$className.'.php', // maybe we want a model
-		Absolute_Path.'app'.DIRSEP.'libs'.DIRSEP.$className.'.class.php' // maybe we want a third party class
+		Absolute_Path.APPDIR.DIRSEP.$className.'.php', // maybe we want appcontroller or appviews
+		Absolute_Path.APPDIR.DIRSEP."controllers".DIRSEP.$className.'.php', // maybe we want a controller
+		Absolute_Path.APPDIR.DIRSEP.'models'.DIRSEP.$className.'.php', // maybe we want a model
+		Absolute_Path.APPDIR.DIRSEP.'libs'.DIRSEP.$className.'.class.php' // maybe we want a third party class
 		// If you need more directories just add them here
 	);
 

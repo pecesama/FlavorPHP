@@ -32,26 +32,26 @@ class html extends singleton {
 	}
 
 	public function includeCss($css) {
-		$css = "<link rel=\"stylesheet\" href=\"".$this->path."app/".$this->type."/css/".$css.".css\" type=\"text/css\" />\n";
+		$css = "<link rel=\"stylesheet\" href=\"".$this->path.APPDIR."/".$this->type."/css/".$css.".css\" type=\"text/css\" />\n";
 		return $css;
 	}
 
 	public function includeCssAbsolute($css) {
-		$css = "<link rel=\"stylesheet\" href=\"".$this->path."app/libs/".$css.".css\" type=\"text/css\" />\n";
+		$css = "<link rel=\"stylesheet\" href=\"".$this->path.APPDIR."/libs/".$css.".css\" type=\"text/css\" />\n";
 		return $css;
 	}
 
 	public function includeJs($js) {
 		if($this->type == "views"){
-			$js = "<script type=\"text/javascript\" src=\"" . $this->path . "app/libs/js/" . $js . ".js\"></script>\n";
+			$js = "<script type=\"text/javascript\" src=\"" . $this->path . APPDIR."/libs/js/" . $js . ".js\"></script>\n";
 		}else{
-			$js = "<script type=\"text/javascript\" src=\"" . $this->path . "app/" . $this->type . "/js/" . $js . ".js\"></script>\n";
+			$js = "<script type=\"text/javascript\" src=\"" . $this->path . APPDIR."/" . $this->type . "/js/" . $js . ".js\"></script>\n";
 		}
 		return $js;
 	}
 
 	public function includeJsAbsolute($js) {
-		$js = "<script type=\"text/javascript\" src=\"".$this->path."app/libs/js/".$js.".js\"></script>\n";
+		$js = "<script type=\"text/javascript\" src=\"".$this->path.APPDIR."/libs/js/".$js.".js\"></script>\n";
 		return $js;
 	}
 
@@ -70,7 +70,7 @@ class html extends singleton {
 	}
 
 	public function includeFavicon($icon="favicon.ico") {
-		$favicon = "<link rel=\"shortcut icon\" href=\"".$this->path.'app/'.$this->type."/images/".$icon."\" />\n";
+		$favicon = "<link rel=\"shortcut icon\" href=\"".$this->path.APPDIR.'/'.$this->type."/images/".$icon."\" />\n";
 		return $favicon;
 	}
 
@@ -150,7 +150,7 @@ class html extends singleton {
 	}
 
 	public function image($name, $alt=""){
-		return "<img src=\"".$this->path.'app/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
+		return "<img src=\"".$this->path.APPDIR.'/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
 	}
 
 	public function imageLink($text, $url="", $html_attributes="", $name, $alt=""){
@@ -158,7 +158,7 @@ class html extends singleton {
 		$html .= "\"";
 		$html .= " $html_attributes ";
 		$html .= ">";
-		$html .= "<img src=\"".$this->path.'app/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
+		$html .= "<img src=\"".$this->path.APPDIR.'/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
 		$html .= "</a>";
 		return $html;
 	}

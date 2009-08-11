@@ -80,7 +80,7 @@ class router{
 					}
 				} else {					
 					if ($this->parts[0] == "index") {
-						$path = Absolute_Path."app".DIRSEP."views/start/index.php";
+						$path = Absolute_Path.APPDIR.DIRSEP."views/start/index.php";
 						if(file_exists($path)){
 							ob_start();
 							include ($path);
@@ -160,13 +160,13 @@ class router{
 	}
 
 	private function controllerExists($controller){
-		return file_exists(Absolute_Path.'app'.DIRSEP.'controllers'.DIRSEP."{$controller}_controller.php");
+		return file_exists(Absolute_Path.APPDIR.DIRSEP.'controllers'.DIRSEP."{$controller}_controller.php");
 	}
 	/*
 	 * Obtiene las rutas desde el archivo app/routes.php
 	 */
 	private function getRoutes(){
-		require(Absolute_Path.'app'.DIRSEP.'routes.php');
+		require(Absolute_Path.APPDIR.DIRSEP.'routes.php');
 	}
 	
 	/*
