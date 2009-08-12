@@ -44,7 +44,7 @@ class debug extends singleton{
 	
 	public function isEnabled(){
 		//TODO hacer esto configurable??
-		return true;
+		return false;
 	}
 	
 	public	function getDefaultData(){

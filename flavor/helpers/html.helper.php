@@ -153,12 +153,70 @@ class html extends singleton {
 		return "<img src=\"".$this->path.APPDIR.'/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
 	}
 
-	public function imageLink($text, $url="", $html_attributes="", $name, $alt=""){
+
+	public function imagePars($name, $extra=""){
+		return "<img src=\"".$this->path.APPDIR.'/'.$this->type."/images/".$name."\" ".$extra." />";
+	}
+	
+	public function acceptCancelButtons($text, $url="#", $wrapper="div") {
+		$html = "<".$wrapper." class=\"buttons\">";		
+		$html .= $this->cancelButton($text[1], $url);
+		$html .= $this->acceptButton($text[0]);
+		$html .= "</".$wrapper.">";
+		return $html;
+	}
+	
+	public function acceptButton($text) {
+		$html = "<button type=\"submit\" class=\"positive\">";
+		$html .= $this->image("tick.png");
+        $html .= $text;
+        $html .= "</button>";
+		return $html;
+	}
+	
+	public function cancelButton($text, $url="#") {		
+		$html = $this->imageLink($text, $url, "class=\"negative\"", "cross.png");
+		return $html;
+	}
+	
+	public function editRemoveButtons($text, $urls, $id, $wrapper="div") {
+		$html = "<".$wrapper." class=\"buttons\">";
+		$html .=  $this->createImageButton($text[0], "page_edit.png", $urls[0]);
+		$html .= $this->createImageButtonConfirm($text[1], "delete.png", $urls[1]);		
+		$html .= "</".$wrapper.">";
+		return $html;
+	}
+
+	public function createImageButton($text, $image, $url="#", $wrapper=NULL) {
+		$html = "";
+		if (isset($wrapper)) {
+			$html .= "<".$wrapper." class=\"buttons\">";
+		}
+		$html .= $this->imageLink($text, $url, "", $image);
+		if (isset($wrapper)) {
+			$html .= "</".$wrapper.">";
+		}
+		return $html;
+	}
+	
+	public function createImageButtonConfirm($text, $image, $url="#", $wrapper=NULL) {
+		$html = "";
+		if (isset($wrapper)) {
+			$html .= "<".$wrapper." class=\"buttons\">";
+		}
+		$html .= $this->imageLinkConfirm($text, $url, $image);
+		if (isset($wrapper)) {
+			$html .= "</".$wrapper.">";
+		}
+		return $html;
+	}	
+
+	public function imageLink($text, $url="#", $html_attributes="", $name, $alt=""){
 		$html = "<a href=\"".$this->path.$url;
 		$html .= "\"";
 		$html .= " $html_attributes ";
 		$html .= ">";
-		$html .= "<img src=\"".$this->path.APPDIR.'/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />";
+		$html .= "<img src=\"".$this->path.APPDIR.'/'.$this->type."/images/".$name."\" alt=\"".$alt."\" title=\"".$alt."\" />".$text;
 		$html .= "</a>";
 		return $html;
 	}
@@ -198,8 +256,8 @@ class html extends singleton {
 		return $html;
 	}
 	
-	public function hiddenField($name, $html_attributes=""){
-		$html = "<input type=\"hidden\" name=\"".$name."\"";
+	public function hiddenField($name, $value, $html_attributes=""){
+		$html = "<input type=\"hidden\" name=\"".$name."\" value=\"".$value."\"";
 		$html .= $html_attributes;
 		$html .= " />";
 		return $html;
@@ -212,12 +270,14 @@ class html extends singleton {
 		return $html;
 	}
 	
-	public function select($name, $values, $selected=""){
+	public function select($name, $values, $selected="", $numericKey=false){
 		$html = "<select name=\"".$name."\">\n";
 		foreach ($values as $key=>$value){
 			$html .= "\t<option ";
-			if (is_numeric($key)){
-				$key = $value;
+			if (!$numericKey) {
+				if (is_numeric($key)){
+					$key = $value;
+				}
 			}
 			$html .= " value=\"$key\"";
 			if($selected==$key){
