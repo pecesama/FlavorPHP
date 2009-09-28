@@ -24,13 +24,16 @@ if (!file_exists($configFile)) {
 	die('Installation required');
 } else {
     require_once($configFile);
+	if(!defined('Absolute2Flavor')){
+		define('Absolute2Flavor',Absolute_Path);
+	}
 }
 
 function __autoload($className) {
 	$directories = array(
-		Absolute_Path.'flavor'.DIRSEP.'classes'.DIRSEP.$className.'.class.php', // Flavor classes
-		Absolute_Path.'flavor'.DIRSEP.'interfaces'.DIRSEP.$className.'.interface.php', // maybe we want an interface
-		Absolute_Path.'flavor'.DIRSEP.'helpers'.DIRSEP.$className.'.helper.php', // maybe we want a helper
+		Absolute2Flavor.'flavor'.DIRSEP.'classes'.DIRSEP.$className.'.class.php', // Flavor classes
+		Absolute2Flavor.'flavor'.DIRSEP.'interfaces'.DIRSEP.$className.'.interface.php', // maybe we want an interface
+		Absolute2Flavor.'flavor'.DIRSEP.'helpers'.DIRSEP.$className.'.helper.php', // maybe we want a helper
 		Absolute_Path.APPDIR.DIRSEP.$className.'.php', // maybe we want appcontroller or appviews
 		Absolute_Path.APPDIR.DIRSEP."controllers".DIRSEP.$className.'.php', // maybe we want a controller
 		Absolute_Path.APPDIR.DIRSEP.'models'.DIRSEP.$className.'.php', // maybe we want a model
