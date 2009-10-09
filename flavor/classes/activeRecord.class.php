@@ -68,6 +68,10 @@ class activeRecord implements ArrayAccess {
 			$this->record[$key] = $var;
 		}		
 	}
+
+	public function prepareFromJSON($jsonData){
+		$this->prepareFromArray(json_decode($jsonData));
+	}
 	
 	public function create($values) {		
 				
