@@ -57,7 +57,7 @@ class activeRecord implements ArrayAccess {
 	
 	private function modelName(){
 		$source = get_class($this);
-		if(ereg("([a-z])([A-Z])", $source, $reg)){
+		if(preg_match("/([a-z])([A-Z])/", $source, $reg)){
 			$source = str_replace($reg[0], $reg[1]."_".strtolower($reg[2]), $source);
 		}
 		return strtolower(inflector::pluralize($source));

@@ -93,7 +93,7 @@ abstract class controller {
 	
 	protected function controllerName(){
 		$source = get_class($this);
-		if(ereg("([a-z])([A-Z])", $source, $reg)){
+		if(preg_match("/([a-z])([A-Z])/", $source, $reg)){
 			$source = str_replace($reg[0], $reg[1]."_".strtolower($reg[2]), $source);
 		}	
 		
