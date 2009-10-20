@@ -79,7 +79,7 @@ class activeRecord implements ArrayAccess {
 		//print_r($arrayData);
 		//die();
 		$primary = $this->keyField;
-		if(in_array($arrayData->action,array("add","update","delete")){
+		if(in_array($arrayData->action,array("add","update","delete"))){
 			//echo "Que hace: $arrayData->action<br>";
 			if(count($arrayData->data)>0){
 				foreach($arrayData->data as $data){
