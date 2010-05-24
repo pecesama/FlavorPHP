@@ -67,7 +67,7 @@ class activeRecord implements ArrayAccess {
 	
 	private function modelName(){
 		$source = get_class($this);
-		if(ereg("([a-z])([A-Z])", $source, $reg)){
+		if(preg_match("/([a-z])([A-Z])/", $source, $reg)){
 			$source = str_replace($reg[0], $reg[1]."_".strtolower($reg[2]), $source);
 		}
 		return strtolower(inflector::pluralize($source));
@@ -77,6 +77,49 @@ class activeRecord implements ArrayAccess {
 		foreach ($array as $key => $var) {
 			$this->record[$key] = $var;
 		}		
+	}
+	
+	public function prepareFromJSON($jsonData){
+		$this->prepareFromArray(json_decode($jsonData));
+	}
+	
+	public function jsonCrud($jsonData){
+		//echo "<br><br>".$jsonData."<br>";
+		$arrayData = json_decode($jsonData);
+		//print_r($arrayData);
+		//die();
+		$primary = $this->keyField;
+		if(in_array($arrayData->action,array("add","update","delete"))){
+			//echo "Que hace: $arrayData->action<br>";
+			if(count($arrayData->data)>0){
+				foreach($arrayData->data as $data){
+					if(isset($data->$primary)){ // <-- Esto no esta del todo bien creo...
+						if(is_numeric($data->$primary) && $data->$primary > 0){
+							//echo "Registro: ".$data->$primary."<br>";
+							$this->find($data->$primary);
+							$dataArray = get_object_vars($data);
+							//print_r($dataArray);
+							if($arrayData->action == "add" || $arrayData->action == "update"){
+								$this->prepareFromArray($dataArray);
+								$this->save();
+							}
+							if($arrayData->action == "delete"){
+								$this->delete();
+							}
+							//echo "<br>";
+						} else {
+							throw new Exception("Wrong Primary Key, action failed");
+						}
+					} else {
+						throw new Exception("Primary Key Missing, action failed");
+					}
+				}
+			} else {
+				throw new Exception("No hay nada en el data!");   
+			}
+		} else {
+			throw new Exception("Unknow Action, process failed");
+		}
 	}
 	
 	public function create($values) {		
