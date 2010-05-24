@@ -51,11 +51,12 @@ class models extends activeRecord {
 	}
 	
 	public function validates($datos) {
-		if(!$this->validate){ return true; }
+		if(!$this->validate){ return true; }                
 		$this->registry->datos = $datos;
 		foreach ($datos as $campo => $valor) {
 			if(array_key_exists($campo, $this->validate)) {
-				if((!isset($this->validate[$campo]['required']) || $this->validate[$campo]['required']==false) && empty($valor)){
+				if((!isset($this->validate[$campo]['required']) || $this->validate[$campo]['required']==false)/* ¿esta validación qué? ----> && empty($valor)*/){
+					//Si el campo requerido no está definido o no es requerido, entonces no entra aquí.
 					continue; 
 				};
 				if(array_key_exists('rules',$this->validate[$campo])) {
