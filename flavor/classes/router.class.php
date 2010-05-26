@@ -136,7 +136,7 @@ class router{
 		}else{
 			$this->uri = $uri;
 			$this->parts = $parts;
-		}
+		}		
 	}
 	
 	/*
@@ -156,7 +156,26 @@ class router{
 					}
 				}
 			}
-		}		
+		}
+
+		/*
+		 * Generador del relativePath a la carpeta "app" para utilizar desde las views
+		 * genera algo así: ../../../app/folder/folder/folder/...etc/
+		 */
+		$relativePath = "";
+		$relative = substr_count(trim($this->uri,"/")."/","/");
+
+		if(substr($this->route,-1,1) == "/"){
+			$offset = 0;
+		}else{
+			$offset = 1;
+		}
+
+		for($c=0;$c<$relative-$offset;$c++){
+			$relativePath .= "../";
+		}
+		
+		define("relativePathToApp",$relativePath);
 	}
 
 	private function controllerExists($controller){
