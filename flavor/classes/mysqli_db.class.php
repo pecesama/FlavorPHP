@@ -103,9 +103,6 @@ class mysqli_db extends singleton implements data {
 	
 	public function numRows() {
 		$re = @mysqli_num_rows($this->query_result);
-		if ($re === false) {
-			throw new Exception($this->errorInfo());
-		}
 		return $re;
 	}
 	
