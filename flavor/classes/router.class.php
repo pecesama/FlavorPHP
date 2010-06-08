@@ -15,6 +15,10 @@ class router{
 		$this->getRoutes();
 	}
 	
+	public function getClass(){
+		return $this->class;	
+	}
+
 	public function dispatch() {
 		$this->getController();
 
@@ -111,7 +115,7 @@ class router{
 	/*
 	 * - Si no se envia el parametro $route, deja en $this->uri la url formateada y 
 	 *   en $this->parts deja todas las partes listas para procesar.
-	 * - Si se define $route, únicamente retorna la url formateada correctamente.
+	 * - Si se define $route, ï¿½nicamente retorna la url formateada correctamente.
 	 *
 	 * ejemplo de salida => 
 	 *  uri: index/saludo/1
@@ -140,7 +144,7 @@ class router{
 	}
 	
 	/*
-	 * Extrae el parámetro que se enviará y busca las rutas definidas en $this->routes para procesarlas.
+	 * Extrae el parï¿½metro que se enviarï¿½ y busca las rutas definidas en $this->routes para procesarlas.
 	 */
 	private function getParams(){
 		foreach($this->routes as $target=>$route){
@@ -160,7 +164,7 @@ class router{
 
 		/*
 		 * Generador del relativePath a la carpeta "app" para utilizar desde las views
-		 * genera algo así: ../../../app/folder/folder/folder/...etc/
+		 * genera algo asï¿½: ../../../app/folder/folder/folder/...etc/
 		 */
 		$relativePath = "";
 		$relative = substr_count(trim($this->uri,"/")."/","/");
