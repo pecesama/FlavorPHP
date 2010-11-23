@@ -16,8 +16,8 @@ class views {
 		$this->registry = registry::getInstance();
 		$this->path = $this->registry["path"];
 		$this->html = html::getInstance();
-		$this->session = session::getInstance();
-		$this->cookie = cookie::getInstance();
+		$this->session = $this->registry["session"];
+		$this->cookie = $this->registry["cookie"];
 		$this->ajax = new ajax();
 		$this->l10n = l10n::getInstance();
 	}
