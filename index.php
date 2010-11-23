@@ -1,4 +1,4 @@
-<?php /* testing commit... */
+<?php
 /**
   * FlavorPHP is a framework based on MVC pattern, constructed with the help of several patterns.
   *
