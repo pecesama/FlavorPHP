@@ -1,6 +1,6 @@
 <?php
 
-class html extends singleton {
+class Html extends Singleton {
 
 	protected $registry;
 	protected $validateErrors;

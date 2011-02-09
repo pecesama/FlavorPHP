@@ -58,7 +58,7 @@ function __autoload($className) {
 // 'Globals' to be used throughout the application
 // usign the _Registry Pattern_
 
-$registry = registry::getInstance();
+$registry = Registry::getInstance();
 
 try {
 
@@ -68,32 +68,32 @@ try {
 	$registry->path = $path;
 
 	if(!defined('requiresBD')){
-		$db = new dbFactory(strtolower(DB_Engine));
+		$db = new DbFactory(strtolower(DB_Engine));
 	} else {
 		if(requiresBD){
-			$db = new dbFactory(strtolower(DB_Engine));
+			$db = new DbFactory(strtolower(DB_Engine));
 		} else {
 			$db = null;
 		}
 	}
 	$registry->db = $db;
 
-	$views = new appviews();
+	$views = new Appviews();
 	$registry->views = $views;
 
-	$themes = new themes();
+	$themes = new Themes();
 	$registry->themes = $themes;
 
-	$session = session::getInstance();
+	$session = Session::getInstance();
 	$registry->session = $session;
 
-	$cookie = cookie::getInstance();
+	$cookie = Cookie::getInstance();
 	$registry->cookie = $cookie;
 
-	$router = new router();
+	$router = new Router();
 	$registry->router = $router;
 	
-	$debug = debug::getInstance();
+	$debug = Debug::getInstance();
 	$registry->debug = $debug;
 	
 	$registry->validateErrors = array();

@@ -6,7 +6,7 @@
  *
  * @package Cache
  **/
-class cacheFile implements ArrayAccess {
+class CacheFile implements ArrayAccess {
 
 	/**
 	 * Retorna el elemento bajo la $key elegida

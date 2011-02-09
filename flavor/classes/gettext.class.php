@@ -34,7 +34,7 @@
  * second parameter in the constructor (e.g. whenusing very large MO files
  * that you don't want to keep in memory)
  */
-class gettext {
+class Gettext {
   //public:
    var $error = 0; // public variable that holds error code (0 if no error)
    

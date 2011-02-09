@@ -1,7 +1,7 @@
 <?php
 
 
-class models extends activeRecord {
+class Models extends ActiveRecord {
 		
 	protected $validate;
 	protected $filter;

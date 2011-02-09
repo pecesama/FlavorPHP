@@ -1,5 +1,5 @@
 <?php
-class router{
+class Router{
 	private $registry;
 	private $class = array(
 		'controller'=>'index',

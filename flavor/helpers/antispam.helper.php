@@ -1,6 +1,6 @@
 <?php
 
-class antispam extends singleton {
+class Antispam extends Singleton {
 	
 	protected $registry;
 	protected $path;

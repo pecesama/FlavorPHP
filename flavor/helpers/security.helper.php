@@ -1,6 +1,6 @@
 <?php
 
-class security extends singleton {
+class Security extends Singleton {
 	
 	private $validTags;
 	private $badAtributes = 'javascript:|onclick|ondblclick|onmousedown|onmouseup|onmouseover|onmousemove|onmouseout|onkeypress|onkeydown|onkeyup';

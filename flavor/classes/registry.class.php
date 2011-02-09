@@ -1,6 +1,6 @@
 <?php
 
-class registry extends singleton implements ArrayAccess {
+class Registry extends Singleton implements ArrayAccess {
 
 	private $vars = array();
 

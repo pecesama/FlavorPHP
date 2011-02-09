@@ -1,6 +1,6 @@
 <?php
 
-class l10n extends singleton {
+class L10n extends Singleton {
 	
 	protected $gettext;
 	protected $input;

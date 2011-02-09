@@ -1,6 +1,6 @@
 <?php
 
-abstract class appcontroller extends controller {
+abstract class Appcontroller extends Controller {
 	
 	public function __construct() {
 		parent::__construct();

@@ -1,6 +1,6 @@
 <?php
 
-class mysql_db extends singleton implements data {
+class Mysql_db extends Singleton implements Data {
 
 	private $connectionId;
 	private $query_result;

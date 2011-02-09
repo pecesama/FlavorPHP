@@ -1,6 +1,6 @@
 <?php
 
-class session extends singleton implements ArrayAccess {
+class Session extends Singleton implements ArrayAccess {
 	
 	public function __construct() {
 		if (!isset($_SESSION)) {

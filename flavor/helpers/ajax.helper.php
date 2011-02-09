@@ -1,6 +1,6 @@
 <?php
 
-class ajax extends pquery {
+class Ajax extends Pquery {
 	
 	protected $registry;
 	protected $path;

@@ -1,6 +1,6 @@
 <?php
 
-class activeRecord implements ArrayAccess {
+class ActiveRecord implements ArrayAccess {
 	private $record = array(); // Contiene los campos de la tabla
 	private $auxRecord = array(); //contiene propiedades agregadas fuera de los campos de la tabla.
 	public $validateErrors;

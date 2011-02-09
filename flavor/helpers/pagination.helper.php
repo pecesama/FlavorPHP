@@ -8,7 +8,7 @@
   * 
   */
 
-class pagination extends singleton {
+class Pagination extends Singleton {
 	
 	protected $registry;
 	protected $path;

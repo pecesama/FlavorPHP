@@ -1,12 +1,12 @@
 <?php
 
 // Select the DB strategy
-class dbFactory {
+class DbFactory {
 
 	private $strategy = NULL;
 	
 	public function __construct($strategy) {
-		$dbm = array('mysql','mysqli','pgsql');
+		$dbm = array('mysql','mysqli');
 		if (!in_array($strategy,$dbm)) {
 			throw new Exception('Invalid parameter for Data Base Strategy');
 		}
@@ -17,9 +17,6 @@ class dbFactory {
 					break;
 				case 'mysqli' :
 					$this->strategy = mysqli_db::getInstance();
-					break;
-				case 'pgsql' :
-					$this->strategy = pgsql_db::getInstance();
 					break;
 			}
 		} catch(Exception $e) {

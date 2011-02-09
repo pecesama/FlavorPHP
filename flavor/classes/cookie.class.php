@@ -1,6 +1,6 @@
 <?php
 
-class cookie extends singleton implements ArrayAccess {
+class Cookie extends Singleton implements ArrayAccess {
 	
 	private $expire;
 	
