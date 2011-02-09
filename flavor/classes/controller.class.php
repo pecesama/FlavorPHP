@@ -26,6 +26,7 @@ abstract class Controller {
 		$this->themes = $this->registry["themes"];
 		$this->path = $this->registry["path"];
 		$this->debug = $this->registry["debug"];
+		$this->router = $this->registry["router"];
 		$this->l10n = l10n::getInstance();
 		$this->html = html::getInstance();
 		$this->ajax = new ajax();

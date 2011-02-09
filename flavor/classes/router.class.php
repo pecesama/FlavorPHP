@@ -15,7 +15,7 @@ class Router{
 		$this->getRoutes();
 	}
 	
-	public function getClass(){
+	private function getClass(){
 		return $this->class;	
 	}
 
@@ -41,6 +41,15 @@ class Router{
 		else
 			$controller->$action();
 	}
+
+	public function getSegment($position){
+		$segment = explode("/",$this->uri);
+		if(isset($segment[$position])){
+			return $segment[$position];
+		}else{
+			return false;
+		}
+	}
 	
 	private function getController(){
 		$this->route = (empty($_GET['url']))?'': $_GET['url'];
@@ -58,26 +67,26 @@ class Router{
 				$controller = "index";
 				$action = "index";
 				$params = $this->parts[0];
-				unset($this->parts[0]);
+				//unset($this->parts[0]);
 			}else{
 				if($this->controllerExists($this->parts[0])){
 					$controller = $this->parts[0];
-					unset($this->parts[0]);
+					//unset($this->parts[0]);
 					
 					if(isset($this->parts[1]) and is_numeric($this->parts[1]) and $this->parts[1]){
 						$action = 'index';
 						$params = $this->parts[1];						
-						unset($this->parts[1]);
+						//unset($this->parts[1]);
 					}elseif(isset($this->parts[1])){
 						$action = $this->parts[1];
 
 						if(isset($this->parts[2])){
 							$params = $this->parts[2];
-							unset($this->parts[2]);							
+							//unset($this->parts[2]);							
 						}else{
 							$params = null;
 						}
-						unset($this->parts[1]);
+						//unset($this->parts[1]);
 					}else{
 						$action = 'index';
 						$params = null;
