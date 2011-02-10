@@ -50,18 +50,6 @@ class Router{
 		}
 	}
 
-	public function getSegment($position){
-		$segment = explode("/",$this->uri);
-		
-		utils::pre($segment);
-		
-		if(isset($segment[$position])){
-			return $segment[$position];
-		}else{
-			return false;
-		}
-	}
-	
 	private function getController(){
 		$this->route = (empty($_GET['url']))?'': $_GET['url'];
 		
