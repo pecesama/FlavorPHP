@@ -6,13 +6,23 @@ class Index_controller extends AppController{
 		parent::__construct();
 	}
 
-	public function index($id = null){
+	public function index($a=null,$b=null,$c=null,$d=null){
 		$this->title_for_layout("Hello World Page!");
 		
-echo		$this->router->getSegment(3);
-
-
-
+		echo $a;
+		echo $b;
+		echo $c;
+		
+		exit;
+		echo $a;
+		
+		echo $id . "<br />";
+		echo $this->router->getSegment(0)."<<br />";
+		echo $this->router->getSegment(1)."<<br />";
+		echo $this->router->getSegment(2)."<<br />";
+		echo $this->router->getSegment(3)."<<br />";
+		echo $this->router->getSegment(4)."<<br />";
+		
 		$this->render();
 	}
 
@@ -21,3 +31,4 @@ echo		$this->router->getSegment(3);
 	}
 
 }
+
