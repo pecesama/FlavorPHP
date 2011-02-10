@@ -30,5 +30,12 @@ class Index_controller extends AppController{
 		echo $this->router->getSegment(10);
 	}
 
+	public function beforeDispatch(){
+		if($this->session->check("logged")){
+			echo "Hola";		
+		}else{
+			echo "Adios";
+		}
+	}	
 }
 

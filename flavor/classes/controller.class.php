@@ -31,16 +31,20 @@ abstract class Controller {
 		$this->html = html::getInstance();
 		$this->ajax = new ajax();
 		$this->pagination = pagination::getInstance();
+		$this->isAjax = $this->isAjax();
+		
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$this->data = $_POST;
 		} else {
 			$this->data = NULL;
 		}
-		$this->isAjax = $this->isAjax();
+		
+		$this->beforeDispatch();
 	}
 
-	abstract public function index($id=NULL);
-		
+	abstract public function index($id);
+
+	public function beforeDispatch() {}
 	public function beforeRender() {}
 	public function afterRender() {}
 		
