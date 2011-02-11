@@ -43,7 +43,7 @@ class Router{
 				$extra_params .= ", '$param'";			
 			}
 			
-			$exec = "\$controller->".$action."(".$params.$extra_params.");";
+			$exec = "\$controller->".$action."('".$params."'".$extra_params.");";
 			eval($exec);
 		}else{
 			$controller->$action();
