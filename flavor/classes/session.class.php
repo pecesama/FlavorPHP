@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-class Session extends Singleton implements ArrayAccess {
+class session extends singleton implements ArrayAccess {
 	
 	public function __construct() {
 		if (!isset($_SESSION)) {

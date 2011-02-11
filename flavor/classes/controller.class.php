@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-abstract class Controller {
+abstract class controller {
 		
 	protected $registry;
 	protected $session;
@@ -26,25 +26,20 @@ abstract class Controller {
 		$this->themes = $this->registry["themes"];
 		$this->path = $this->registry["path"];
 		$this->debug = $this->registry["debug"];
-		$this->router = $this->registry["router"];
 		$this->l10n = l10n::getInstance();
 		$this->html = html::getInstance();
 		$this->ajax = new ajax();
 		$this->pagination = pagination::getInstance();
-		$this->isAjax = $this->isAjax();
-		
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$this->data = $_POST;
 		} else {
 			$this->data = NULL;
 		}
-		
-		$this->beforeDispatch();
+		$this->isAjax = $this->isAjax();
 	}
 
-	abstract public function index($id);
-
-	public function beforeDispatch() {}
+	abstract public function index($id=NULL);
+		
 	public function beforeRender() {}
 	public function afterRender() {}
 		
@@ -81,14 +76,14 @@ abstract class Controller {
 	
 	public function renderTheme($theme,$file='index.htm'){
 		$this->beforeRender();
-		$path = Absolute_Path.APPDIR.DIRSEP.$theme.DIRSEP."$file";
+		$path = Absolute_Path."app".DIRSEP.$theme.DIRSEP."$file";
 		echo $this->themes->fetch($path);
 		$this->afterRender();
 		exit;
 	}
 
 	public function fetchTheme($theme,$file='index.htm'){
-		$path = Absolute_Path.APPDIR.DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";
+		$path = Absolute_Path."app".DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";
 		return $this->themes->fetch($path);
 	}
 	

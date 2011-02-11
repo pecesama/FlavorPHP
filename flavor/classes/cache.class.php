@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 /**
  * Cache Class
  *

@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 
 /**
   * Pluralize English words.
@@ -7,7 +7,7 @@
   * 
   * @static
   */
-class Inflector {
+class inflector {
 
 	public static function pluralize($word)
     {

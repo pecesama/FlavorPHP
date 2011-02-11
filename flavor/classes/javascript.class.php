@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 
 /**
  * JavaScript
@@ -14,7 +14,7 @@
  * @filesource
  */
 
-class Javascript {
+class javascript {
 	
 	function button_to_function($name,$function=null)
 	{

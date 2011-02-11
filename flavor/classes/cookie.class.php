@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-class Cookie extends Singleton implements ArrayAccess {
+class cookie extends singleton implements ArrayAccess {
 	
 	private $expire;
 	

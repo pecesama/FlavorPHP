@@ -8,7 +8,7 @@
   * 
   */
 
-class Pagination extends Singleton {
+class pagination extends singleton {
 	
 	protected $registry;
 	protected $path;
@@ -50,9 +50,9 @@ class Pagination extends Singleton {
 				   
 			//previous button
 			if ($this->page > 1) {
-				$pagination .= "<a href=\"". $this->targetpage. $prev ."\">".$this->l10n->__("Anterior")."</a>";
+				$pagination .= "<a href=\"". $this->targetpage. $prev ."\">".$this->l10n->__("Prev")."</a>";
 			} else {
-				$pagination .= "<span class=\"disabled\">".$this->l10n->__("Anterior")."</span>";
+				$pagination .= "<span class=\"disabled\">".$this->l10n->__("Prev")."</span>";
 			}
 		   
 			//pages   
@@ -106,9 +106,9 @@ class Pagination extends Singleton {
 		   
 			//next button
 			if ( $this->page < $counter - 1 ) {
-				$pagination .= "<a href=\"".$this->targetpage . $next."\">".$this->l10n->__("Siguiente")."</a>";
+				$pagination .= "<a href=\"".$this->targetpage . $next."\">".$this->l10n->__("Next")."</a>";
 			} else {
-				$pagination .= "<span class=\"disabled\">".$this->l10n->__("Siguiente")."</span>";
+				$pagination .= "<span class=\"disabled\">".$this->l10n->__("Next")."</span>";
 			}
 		   
 			$pagination .= '</div>';

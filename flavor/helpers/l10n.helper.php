@@ -1,6 +1,6 @@
 <?php /* Forcing merge */
 
-class L10n extends Singleton {
+class l10n extends singleton {
 	
 	protected $gettext;
 	protected $input;

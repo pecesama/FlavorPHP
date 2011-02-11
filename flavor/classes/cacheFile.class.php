@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 /**
  * CacheFile Class
  * 
@@ -6,7 +6,7 @@
  *
  * @package Cache
  **/
-class CacheFile implements ArrayAccess {
+class cacheFile implements ArrayAccess {
 
 	/**
 	 * Retorna el elemento bajo la $key elegida

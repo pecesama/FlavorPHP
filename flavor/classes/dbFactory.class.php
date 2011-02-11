@@ -1,12 +1,12 @@
-<?php /* Forcing merge */
+<?php
 
 // Select the DB strategy
-class DbFactory {
+class dbFactory {
 
 	private $strategy = NULL;
 	
 	public function __construct($strategy) {
-		$dbm = array('mysql','mysqli');
+		$dbm = array('mysql','mysqli','pgsql');
 		if (!in_array($strategy,$dbm)) {
 			throw new Exception('Invalid parameter for Data Base Strategy');
 		}
@@ -17,6 +17,9 @@ class DbFactory {
 					break;
 				case 'mysqli' :
 					$this->strategy = mysqli_db::getInstance();
+					break;
+				case 'pgsql' :
+					$this->strategy = pgsql_db::getInstance();
 					break;
 			}
 		} catch(Exception $e) {

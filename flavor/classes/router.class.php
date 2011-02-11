@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 
 class Router{
 	private $registry;
@@ -48,9 +48,8 @@ class Router{
 			eval($exec);
 		}else{
 			$controller->$action();
-		}
 	}
-
+	
 	private function getController(){
 		$this->route = (empty($_GET['url']))?'': $_GET['url'];
 		
@@ -124,7 +123,7 @@ class Router{
 	/*
 	 * - Si no se envia el parametro $route, deja en $this->uri la url formateada y 
 	 *   en $this->parts deja todas las partes listas para procesar.
-	 * - Si se define $route, ï¿½nicamente retorna la url formateada correctamente.
+	 * - Si se define $route, únicamente retorna la url formateada correctamente.
 	 *
 	 * ejemplo de salida => 
 	 *  uri: index/saludo/1
@@ -149,11 +148,11 @@ class Router{
 		}else{
 			$this->uri = $uri;
 			$this->parts = $parts;
-		}		
+		}
 	}
 	
 	/*
-	 * Extrae el parï¿½metro que se enviarï¿½ y busca las rutas definidas en $this->routes para procesarlas.
+	 * Extrae el parámetro que se enviará y busca las rutas definidas en $this->routes para procesarlas.
 	 */
 	private function getParams(){
 		foreach($this->routes as $target=>$route){
@@ -173,7 +172,7 @@ class Router{
 
 		/*
 		 * Generador del relativePath a la carpeta "app" para utilizar desde las views
-		 * genera algo asï¿½: ../../../app/folder/folder/folder/...etc/
+		 * genera algo así: ../../../app/folder/folder/folder/...etc/
 		 */
 		$relativePath = "";
 		$relative = substr_count(trim($this->uri,"/")."/","/");

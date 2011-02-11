@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 
 /**
  * JQuery
@@ -14,7 +14,7 @@
  * @filesource
  */
 
-class Pquery extends Javascript  {
+class pquery extends javascript  {
 	
 		var $CALLBACKS 	=  	array('beforeSend',
 							'complete',

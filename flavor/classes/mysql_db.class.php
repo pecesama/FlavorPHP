@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-class Mysql_db extends Singleton implements Data {
+class mysql_db extends singleton implements data {
 
 	private $connectionId;
 	private $query_result;

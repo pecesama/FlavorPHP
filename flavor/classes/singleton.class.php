@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-class Singleton {
+class singleton {
 	private static $instances = array();
 	
 	public static function getInstance($class) {

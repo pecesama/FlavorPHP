@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-class Registry extends Singleton implements ArrayAccess {
+class registry extends singleton implements ArrayAccess {
 
 	private $vars = array();
 

@@ -1,6 +1,6 @@
 <?php /* Forcing merge */
 
-class Ajax extends Pquery {
+class ajax extends pquery {
 	
 	protected $registry;
 	protected $path;

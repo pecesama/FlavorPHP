@@ -1,28 +1,20 @@
-<?php /* Forcing merge */
+<?php
 
 class ActiveRecord implements ArrayAccess {
-	private $record = array(); // Contiene los campos de la tabla
+	protected $record = array(); // Contiene los campos de la tabla
 	private $auxRecord = array(); //contiene propiedades agregadas fuera de los campos de la tabla.
-	public $validateErrors;
-	public $filterErrors;
 	private $keyField = "";
 	private $table = NULL;
 	private $isNew = true;
-	private $multipleRecords = false;
-	private $isValid = true;
 	protected $registry;
 	public $db;	
 	private $columns;
 	
 	public function __construct() {
 		$this->registry = registry::getInstance();
-		$this->validateErrors = $this->registry->validateErrors;
-		$this->filterErrors = $this->registry->filterErrors;
-
 		$this->db = $this->registry["db"];
-
 		$this->table = $this->modelName();
-		
+
 		$rs = $this->db->query("SHOW COLUMNS FROM ".$this->table);
 		
 		while ($row = $this->db->fetchRow()) {
@@ -134,32 +126,17 @@ class ActiveRecord implements ArrayAccess {
 		return $this->db->lastId();
 	}
 	
-	public function invalidate(){
-		$this->isValid = false;
-	}
 	
 	public function save() {
-		$this->record =	$this->doFilter($this->record);
-		$this->isValid = $this->validates($this->record);
-
-		if ($this->isValid) {		
 			if( $this->isNew ) {
-				if(isset($this->columns["created"])){
-					$this->record["created"] = date("Y-m-d H:i:s",strtotime("now"));
-				}
-				if(isset($this->columns["modified"])){
-					$this->record["modified"] = date("Y-m-d H:i:s",strtotime("now"));
-				}			
 				$id = $this->create($this->record);
 				$this->record[$this->keyField] = $id;
 				$this->isNew = false;
+
 				return $id;
 			} else {
 				return $this->update();
 			}
-		} else {
-			return NULL;
-		}
 	}	
 	
 	public function update() {
@@ -202,7 +179,6 @@ class ActiveRecord implements ArrayAccess {
 			$rs = $this->db->query($sql);
 		}
 		
-		return true;
 		if (!$rs) {
 			throw new Exception("SQL Error, Remove Failed");
 		}
@@ -215,11 +191,20 @@ class ActiveRecord implements ArrayAccess {
 	}
 	
 	public function find($id) { 
-		$sql = "SELECT * FROM ".$this->table." WHERE ".$this->keyField."=".intval($id)." LIMIT 1";
-        return $this->findBySql($sql);
+		
+		$sql = "SELECT * FROM ".$this->table." WHERE ".$this->keyField."=".intval($id);
+		$rs = $this->db->query($sql);
+		$row = $this->db->fetchRow();
+		
+		if($row != null){
+			$this->record = $row;
+			$this->isNew = false;
+		}
+		
+		return $this->record;
 	}	
 	
-	public function findBy($field, $value) {
+	public function findBy($field, $value) { 
 		if(is_array($field)){
 			$where = "";
 			foreach($field as $k=>$v){

@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 /**
  * Debug class
  * 
@@ -10,7 +10,7 @@
  * @package debug
  **/
 
-class Debug extends singleton{
+class debug extends singleton{
 	/**
 	 * Va guardando la informacion que el desarrollador va enviando usando $debug->log(...);
 	 *
