@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 
 class Antispam extends Singleton {
 	

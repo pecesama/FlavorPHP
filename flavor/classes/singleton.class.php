@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 
 class Singleton {
 	private static $instances = array();

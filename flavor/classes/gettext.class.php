@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
   
 /*
    Copyright (c) 2003 Danilo Segan <danilo@kvota.net>.

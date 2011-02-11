@@ -1,4 +1,5 @@
-<?php
+<?php /* Forcing merge */
+
 class Router{
 	private $registry;
 	private $class = array(

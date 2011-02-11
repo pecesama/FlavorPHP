@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 
 // Select the DB strategy
 class DbFactory {

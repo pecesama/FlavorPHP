@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 
 class ActiveRecord implements ArrayAccess {
 	private $record = array(); // Contiene los campos de la tabla

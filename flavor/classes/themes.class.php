@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 /*
 	Class name: Themes
 	Class autor: Victor De la Rocha http//mis-algoritmos.com/themes-class

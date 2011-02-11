@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 
 class Mysql_db extends Singleton implements Data {
 

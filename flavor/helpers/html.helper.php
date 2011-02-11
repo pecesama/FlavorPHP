@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 
 class Html extends Singleton {
 

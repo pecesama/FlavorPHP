@@ -1,4 +1,4 @@
-<?php
+<?php /* Forcing merge */
 
 class pgsql_db extends singleton implements data {
 
