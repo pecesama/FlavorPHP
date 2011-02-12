@@ -66,10 +66,13 @@ abstract class Controller {
 			if (is_null($view)) {
 				$view = $this->action;
 			}
-			$this->beforeRender();
+			
 			$this->view->content_for_layout = $this->view->fetch($this->controllerName().".".$view);
 			$this->view->title_for_layout = $this->tfl;
-			echo $this->showDebug().$this->view->fetch("", "layout");
+			echo $this->showDebug();
+			$output = $this->view->fetch("", "layout");
+			$this->beforeRender(&$output);
+			echo $output;
 			$this->afterRender();
 			$this->debug->clearLogs();
 			exit();
