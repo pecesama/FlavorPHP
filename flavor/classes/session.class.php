@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class session extends singleton implements ArrayAccess {
 	
@@ -65,4 +65,3 @@ class session extends singleton implements ArrayAccess {
 	}
 	
 }
-?>

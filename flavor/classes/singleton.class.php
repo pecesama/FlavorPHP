@@ -12,4 +12,3 @@ class singleton {
 
 	private final function __clone() {}
 }
-?>

@@ -44,10 +44,11 @@ class Router{
 				$extra_params .= ", '$param'";			
 			}
 			
-			$exec = "\$controller->".$action."(".$params.$extra_params.");";
+			$exec = "\$controller->".$action."('".$params."'".$extra_params.");";
 			eval($exec);
 		}else{
 			$controller->$action();
+		}
 	}
 	
 	private function getController(){
@@ -123,7 +124,7 @@ class Router{
 	/*
 	 * - Si no se envia el parametro $route, deja en $this->uri la url formateada y 
 	 *   en $this->parts deja todas las partes listas para procesar.
-	 * - Si se define $route, únicamente retorna la url formateada correctamente.
+	 * - Si se define $route, Ãºnicamente retorna la url formateada correctamente.
 	 *
 	 * ejemplo de salida => 
 	 *  uri: index/saludo/1
@@ -152,7 +153,7 @@ class Router{
 	}
 	
 	/*
-	 * Extrae el parámetro que se enviará y busca las rutas definidas en $this->routes para procesarlas.
+	 * Extrae el parÃ¡metro que se enviarÃ¡ y busca las rutas definidas en $this->routes para procesarlas.
 	 */
 	private function getParams(){
 		foreach($this->routes as $target=>$route){
@@ -172,7 +173,7 @@ class Router{
 
 		/*
 		 * Generador del relativePath a la carpeta "app" para utilizar desde las views
-		 * genera algo así: ../../../app/folder/folder/folder/...etc/
+		 * genera algo asÃ­: ../../../app/folder/folder/folder/...etc/
 		 */
 		$relativePath = "";
 		$relative = substr_count(trim($this->uri,"/")."/","/");
@@ -213,4 +214,3 @@ class Router{
 		$this->routes[$target] = $GET;
 	}
 }
-?>

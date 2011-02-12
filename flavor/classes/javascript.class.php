@@ -81,6 +81,3 @@ class javascript {
 		return $return_val;
 	}
 }
-
-
-?>

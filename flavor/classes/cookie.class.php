@@ -57,4 +57,3 @@ class cookie extends singleton implements ArrayAccess {
 	}
 	
 }
-?>

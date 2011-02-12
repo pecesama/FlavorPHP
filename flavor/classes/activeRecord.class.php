@@ -304,4 +304,3 @@ class ActiveRecord implements ArrayAccess {
 		return $this->db->sql_escape($msg);
 	}
 }
-?>

@@ -65,4 +65,3 @@ class registry extends singleton implements ArrayAccess {
 	}
 	
 }
-?>

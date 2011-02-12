@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class views {
 
@@ -74,7 +74,4 @@ class views {
 		ob_end_clean();
 		return $contents;
 	}
-
 }
-
-?>
