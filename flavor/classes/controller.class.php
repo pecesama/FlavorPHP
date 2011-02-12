@@ -30,18 +30,22 @@ abstract class Controller {
 		$this->html = html::getInstance();
 		$this->ajax = new ajax();
 		$this->pagination = pagination::getInstance();
+		
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$this->data = $_POST;
 		} else {
 			$this->data = NULL;
 		}
 		$this->isAjax = $this->isAjax();
+		
+		$this->beforeDispatch();
 	}
 
 	abstract public function index($id=NULL);
 		
 	public function beforeRender() {}
 	public function afterRender() {}
+	public function beforeDispatch() {}
 		
 	public function redirect($url, $intern = true) {
 		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
