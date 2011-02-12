@@ -10,7 +10,7 @@
  * @package debug
  **/
 
-class debug extends singleton{
+class Debug extends Singleton{
 	/**
 	 * Va guardando la informacion que el desarrollador va enviando usando $debug->log(...);
 	 *

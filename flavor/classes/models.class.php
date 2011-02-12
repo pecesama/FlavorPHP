@@ -1,4 +1,5 @@
 <?php
+
 class Models extends ActiveRecord {
 	protected $registry;
 	public $validateErrors;

@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-class antispam extends singleton {
+class Antispam extends Singleton {
 	
 	protected $registry;
 	protected $path;
@@ -35,7 +35,4 @@ class antispam extends singleton {
 		}
 		return false;
 	}
-	
-
 }
-?>

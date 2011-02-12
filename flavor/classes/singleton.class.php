@@ -1,6 +1,6 @@
 <?php
 
-class singleton {
+class Singleton {
 	private static $instances = array();
 	
 	public static function getInstance($class) {

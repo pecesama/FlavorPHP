@@ -1,7 +1,7 @@
 <?php
 
 // Select the DB strategy
-class dbFactory {
+class DbFactory {
 
 	private $strategy = NULL;
 	

@@ -1,6 +1,6 @@
-<?php /* Forcing merge */
+<?php
 
-class l10n extends singleton {
+class L10n extends Singleton {
 	
 	protected $gettext;
 	protected $input;
@@ -184,4 +184,3 @@ class l10n extends singleton {
 		return $out;
 	}
 }
-?>

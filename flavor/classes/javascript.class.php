@@ -14,7 +14,7 @@
  * @filesource
  */
 
-class javascript {
+class Javascript {
 	
 	function button_to_function($name,$function=null)
 	{

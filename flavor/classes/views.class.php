@@ -1,6 +1,6 @@
 <?php 
 
-class views {
+class Views {
 
 	protected $vars = array();
 	protected $layout = "default";

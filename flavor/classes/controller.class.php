@@ -1,6 +1,6 @@
 <?php
 
-abstract class controller {
+abstract class Controller {
 		
 	protected $registry;
 	protected $session;

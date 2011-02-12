@@ -1,4 +1,4 @@
-<?php /* Forcing merge */
+<?php
 
 /**
   * Digg Style Pagination.
@@ -8,7 +8,7 @@
   * 
   */
 
-class pagination extends singleton {
+class Pagination extends Singleton {
 	
 	protected $registry;
 	protected $path;
@@ -118,4 +118,3 @@ class pagination extends singleton {
 	
 	
 }
-?>

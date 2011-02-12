@@ -14,7 +14,7 @@
  * @filesource
  */
 
-class pquery extends javascript  {
+class Pquery extends Javascript  {
 	
 		var $CALLBACKS 	=  	array('beforeSend',
 							'complete',

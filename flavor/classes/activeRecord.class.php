@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class ActiveRecord implements ArrayAccess {
 	protected $record = array(); // Contiene los campos de la tabla
