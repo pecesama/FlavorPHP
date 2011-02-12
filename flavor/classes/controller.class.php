@@ -69,11 +69,13 @@ abstract class Controller {
 			
 			$this->view->content_for_layout = $this->view->fetch($this->controllerName().".".$view);
 			$this->view->title_for_layout = $this->tfl;
-			echo $this->showDebug();
 			$output = $this->view->fetch("", "layout");
+			
+			echo $this->showDebug();
 			$this->beforeRender(&$output);
 			echo $output;
 			$this->afterRender();
+			
 			$this->debug->clearLogs();
 			exit();
 		}else{
@@ -83,14 +85,14 @@ abstract class Controller {
 	
 	public function renderTheme($theme,$file='index.htm'){
 		$this->beforeRender();
-		$path = Absolute_Path."app".DIRSEP.$theme.DIRSEP."$file";
+		$path = Absolute_Path.APPDIR.DIRSEP.$theme.DIRSEP."$file";
 		echo $this->themes->fetch($path);
 		$this->afterRender();
 		exit;
 	}
 
 	public function fetchTheme($theme,$file='index.htm'){
-		$path = Absolute_Path."app".DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";
+		$path = Absolute_Path.APPDIR.DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";
 		return $this->themes->fetch($path);
 	}
 	
