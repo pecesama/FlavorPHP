@@ -45,4 +45,3 @@ class Security extends Singleton {
 		return $sourceTag;
 	}
 }
-?>

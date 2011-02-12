@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 /**
  * JavaScript
@@ -81,6 +81,3 @@ class Javascript {
 		return $return_val;
 	}
 }
-
-
-?>

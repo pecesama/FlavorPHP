@@ -1,6 +1,6 @@
 <?php
 
-abstract class Appcontroller extends Controller {
+abstract class AppController extends Controller {
 	
 	public function __construct() {
 		parent::__construct();
@@ -10,5 +10,3 @@ abstract class Appcontroller extends Controller {
 	//	$this->debug->log('Pase por '.get_class($this).'<br>','Route',true);
 	}
 }
-
-?>

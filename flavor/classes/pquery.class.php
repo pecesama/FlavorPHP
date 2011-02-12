@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 /**
  * JQuery
@@ -261,9 +261,5 @@ class Pquery extends Javascript  {
 		if (isset($options['global'])) $js_options['global'] = $options['global'];
 			
 		return $this->_options_for_javascript($js_options);
-	}
-
-
-
-	
+	}	
 }

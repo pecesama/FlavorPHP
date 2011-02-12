@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /*
    Copyright (c) 2003, 2005 Danilo Segan <danilo@kvota.net>.
@@ -163,4 +163,3 @@ class CachedFileReader extends StringReader {
     }
   }
 }
-?>

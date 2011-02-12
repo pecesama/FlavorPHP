@@ -184,4 +184,3 @@ class L10n extends Singleton {
 		return $out;
 	}
 }
-?>

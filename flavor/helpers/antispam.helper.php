@@ -35,7 +35,4 @@ class Antispam extends Singleton {
 		}
 		return false;
 	}
-	
-
 }
-?>

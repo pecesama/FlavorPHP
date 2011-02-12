@@ -141,4 +141,3 @@ class Mysql_db extends Singleton implements Data {
 	}
 
 }
-?>
