@@ -41,7 +41,7 @@ abstract class Controller {
 		$this->beforeDispatch();
 	}
 
-	abstract public function index($id=NULL);
+	abstract public function index();
 		
 	public function beforeRender() {}
 	public function afterRender() {}
@@ -121,10 +121,7 @@ abstract class Controller {
 		}else return '';
 	}
 	
-	/*Why private??*/ function isAjax() {
-		//var_dump($_SERVER);
-		//die();
+	public function isAjax() {
 		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']=="XMLHttpRequest");
 	} 
-	
 }

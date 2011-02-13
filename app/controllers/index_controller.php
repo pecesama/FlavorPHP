@@ -6,7 +6,7 @@ class Index_controller extends AppController{
 		parent::__construct();
 	}
 	
-	public function index($a=null,$b=null,$c=null,$d=null){		
+	public function index(){
 		$this->render();
 	}
 	
