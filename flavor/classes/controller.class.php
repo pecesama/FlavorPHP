@@ -41,14 +41,14 @@ abstract class Controller {
 		$this->beforeDispatch();
 	}
 
-	abstract public function index();
+	abstract public function index(); 
 		
 	public function beforeRender() {}
 	public function afterRender() {}
 	public function beforeDispatch() {}
 		
 	public function redirect($url, $intern = true, $endsWith = "/") {
-		//Victor De la Rocha: ¿Esta línea a que proceso, por qué está aquí?
+		//Victor De la Rocha: ï¿½Esta lï¿½nea a que proceso, por quï¿½ estï¿½ aquï¿½?
 		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
 		
 		if ($intern){
