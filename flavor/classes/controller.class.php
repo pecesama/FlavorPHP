@@ -48,7 +48,7 @@ abstract class Controller {
 	public function beforeDispatch() {}
 		
 	public function redirect($url, $intern = true, $endsWith = "/") {
-		//Victor De la Rocha: �Esta l�nea a que proceso, por qu� est� aqu�?
+		//Victor De la Rocha: Esta línea a que proceso pertenece, y que hace en controllers?
 		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
 		
 		if ($intern){
