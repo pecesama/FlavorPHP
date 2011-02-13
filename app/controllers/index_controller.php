@@ -7,6 +7,9 @@ class Index_controller extends AppController{
 	}
 	
 	public function index(){
+		
+		$this->redirect("index/test",true,null);
+		
 		$this->render();
 	}
 	

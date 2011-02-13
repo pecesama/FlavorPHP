@@ -47,18 +47,23 @@ abstract class Controller {
 	public function afterRender() {}
 	public function beforeDispatch() {}
 		
-	public function redirect($url, $intern = true) {
+	public function redirect($url, $intern = true, $endsWith = "/") {
+		//Victor De la Rocha: ¿Esta línea a que proceso, por qué está aquí?
 		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
 		
-		if ($intern) {
-			$url = (!$this->endsWith($url, "/")) ? $url."/" : $url ;
+		if ($intern){
+			$url = (!$this->endsWith($url, $endsWith)) ? $url.$endsWith : $url ;
 			$url = $this->path.$url;
-		} else {
+		}else{
 			$url = $url;
 		}
 		
 		header("Location: ".$url);
 		exit();
+	}
+	
+	protected function endsWith($str, $sub) {
+		return (substr($str, strlen($str) - strlen($sub)) == $sub);
 	}
 	
 	public function render($view=NULL) {
@@ -109,10 +114,6 @@ abstract class Controller {
 		$controller = explode("_", $source);
 		
 		return strtolower($controller[0]);
-	}
-	
-	protected function endsWith($str, $sub) {
-		return (substr($str, strlen($str) - strlen($sub)) == $sub);
 	}
 	
 	protected function showDebug(){
