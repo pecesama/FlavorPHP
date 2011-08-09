@@ -28,27 +28,23 @@ class Router{
 		$params = $this->class['params'];
 		
 		$class = $controller."_controller";
-		$controller = new $class();
+
+                // FIXME: $params must have a array with all the params
+                $this->parts = array_pad($this->parts, - (count($this->parts) + 1), $params);
+                array_reverse($this->parts, true); // reverse the order of the variables
+                
+                $reflection_class = new ReflectionClass($class);
+                $controller = $reflection_class->newInstanceArgs(array()); // FIXME: how get the construct params?
 
 		if(!is_callable(array($controller,$action))) {
 			$this->notFound();
 		}
-
+                
+                $controller->params = $this->parts;
+                
 		$controller->action = $action;
-		$controller->params = $params;
 
-		if($params){
-			//Maybe we want more parameters
-			$extra_params = '';
-			foreach($this->parts as $param){
-				$extra_params .= ", '$param'";			
-			}
-			
-			$exec = "\$controller->".$action."('".$params."'".$extra_params.");";
-			eval($exec);
-		}else{
-			$controller->$action();
-		}
+                call_user_func_array(array($controller, $controller->action), $controller->params);
 	}
 	
 	private function getController(){
