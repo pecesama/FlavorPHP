@@ -1,0 +1,58 @@
+\documentclass{book}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{listings}
+\usepackage{color}
+
+\author{\emph{because PHP should have a better taste}\\}
+\title{\textbf{FlavorPHP}\\ versión 1.0\\ Manual}
+\date{http://www.flavorphp.com/\\ \vspace{12pt} \copyright 2008-2011 flavorphp.com}
+
+\newenvironment{codigoFuente}
+{\begin{list}{}{\setlength{\leftmargin}{1em}}\item\scriptsize\bfseries}
+{\end{list}}
+
+\renewcommand\lstlistlistingname{Índice de códigos fuente}
+\renewcommand\lstlistingname{Código}
+\renewcommand\listtablename{Lista de Tablas}
+\renewcommand{\tablename}{Tabla}
+
+
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+    
+\begin{document}
+%Colores para los codigos fuentes
+\definecolor{fondo}{rgb}{1,1,1} %{1,1,0.8} 				%{1,1,1} %FF FF FF
+\definecolor{comentarios}{rgb}{1,0.31,0}  %FF 80 00
+\definecolor{palabraClave}{rgb}{0.25,0.38,1}						%66 99 FF					%{0,0.3,0} %00 77 00
+\definecolor{cadenas}{rgb}{0.8,0,0}							%cc 00 00	%{1,0,0} %FF 00 00
+\definecolor{normal}{rgb}{0,0.12,0.25} %00 33 66
+\lstset{classoffset=0, language=php, stringstyle=\color{cadenas}, showspaces=false, showstringspaces=false, tabsize=3, commentstyle=\color{comentarios}\textit, keywordstyle=\color{palabraClave}\bfseries}
+%\lstset{numbers=left, numberstyle=\tiny}
+\lstset{backgroundcolor=\color{fondo}}
+\lstset{rulecolor=\color{black}}
+\lstset{postbreak=\space, breakindent=5pt, breaklines}
+
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+%\listoffigures
+%\newpage
+\listoftables
+\newpage
+\lstlistoflistings
+\newpage
+
+\chapter{FlavorPHP}
+\include{introduccion}
+\chapter{MVC (Modelo-Vista-Controlador)}
+\include{mvc}
+\chapter{Mi primera aplicación con Flavor}
+\include{aplicacion}
+\include{fin}
+
+\end{document}

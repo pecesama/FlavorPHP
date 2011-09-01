@@ -1,0 +1,256 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2011.8.11)  31 AUG 2011 19:27
+entering extended mode
+**flavorphp
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\flavorphp.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls"
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\bk10.clo"
+File: bk10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin1.def"
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\spanish.ldf"
+Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\es@datefmt=\count89
+\es@quottoks=\toks16
+\es@quotdepth=\count90
+Package babel Info: Making " an active character on input line 492.
+Package babel Info: Making . an active character on input line 585.
+Package babel Info: Making < an active character on input line 630.
+Package babel Info: Making > an active character on input line 630.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+\lst@mode=\count91
+\lst@gtempboxa=\box26
+\lst@token=\toks18
+\lst@length=\count92
+\lst@currlwidth=\dimen104
+\lst@column=\count93
+\lst@pos=\count94
+\lst@lostspace=\dimen105
+\lst@width=\dimen106
+\lst@newlines=\count95
+\lst@lineno=\count96
+\lst@maxwidth=\dimen107
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count97
+\lst@skipnumbers=\count98
+\lst@framebox=\box27
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 130.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvips.def"
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\flavorphp.aux
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\introduccion.aux)
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\mvc.aux)
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\aplicacion.aux
+
+LaTeX Warning: Label `lst:metodoAgregar' multiply defined.
+
+) (C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\fin.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+\c@lstlisting=\count99
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
+File: lstlang2.sty 2004/09/05 1.3 listings language file
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 39.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 39.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 39.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 39.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
+ [1
+
+
+] [2
+
+]
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\flavorphp.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+)
+\tf@toc=\write3
+ [3]
+[4
+
+] (C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\flavorphp.lot)
+\tf@lot=\write4
+
+[5] [6
+
+] (C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\flavorphp.lol)
+\tf@lol=\write5
+
+[7] [8
+
+]
+Cap\'{\i }tulo 1.
+[9] (C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\introduccion.tex
+Overfull \hbox (43.5531pt too wide) in paragraph at lines 6--7
+\OT1/cmr/m/it/10 View-Controller\OT1/cmr/m/n/10 ), \OT1/cmr/bx/n/10 Fla-vorPHP 
+\OT1/cmr/m/n/10 fue crea-do por Pe-dro San-ta-na [\OT1/cmr/m/it/10 http://www.p
+ecesama.net/\OT1/cmr/m/n/10 ]
+ []
+
+[10
+
+] [11] [12] [13]
+Overfull \hbox (30.34843pt too wide) in paragraph at lines 138--139
+[]\OT1/cmr/m/n/10 Llamar (o re-nom-brar) el ar-chi-vo de nues-tra cla-se co-mo 
+\OT1/cmr/bx/it/10 nom-bre[]clase\OT1/cmr/bx/n/10 .class.php\OT1/cmr/m/n/10 . 
+ []
+
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 146.
+) [14]
+Cap\'{\i }tulo 2.
+[15
+
+
+] (C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\mvc.tex [16
+
+] [17]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 120.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 120.
+ [18]) [19] [20]
+Cap\'{\i }tulo 3.
+[21
+
+
+] (C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\aplicacion.tex
+[22
+
+] [23] [24] [25]
+
+LaTeX Warning: Reference `lst:vistaAgregar' on page 26 undefined on input line 
+198.
+
+[26] [27]
+Overfull \hbox (14.51717pt too wide) in paragraph at lines 270--271
+[]\OT1/cmr/m/n/10 Recordemos que to-dos es-tos meto-dos an-te-rio-res de-ben d
+e ir en el in-dex[]controller
+ []
+
+) [28] (C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\fin.tex) [29
+
+
+]
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\flavorphp.aux
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\introduccion.aux)
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\mvc.aux)
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\aplicacion.aux)
+(C:\xampp\htdocs\flavorphp\documentacion\v1-0\manual\fin.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4972 strings out of 494046
+ 74995 string characters out of 3148386
+ 445213 words of memory out of 3000000
+ 8239 multiletter control sequences out of 15000+200000
+ 11346 words of font info for 39 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 31i,18n,40p,895b,3628s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on flavorphp.dvi (29 pages, 128752 bytes).

@@ -1,0 +1,156 @@
+\color{black}
+\section{Introducción}
+
+Este manual esta basado en la versión 1.0 de \textbf{FlavorPHP}.
+
+\textbf{FlavorPHP} es un framework PHP5 (con licencia MIT) basado en el paradigma MVC jerárquico (HMVC, por sus siglas en inglés \emph{Hierarchical-Model-View-Controller}), \textbf{FlavorPHP} fue creado por Pedro Santana [\emph{http://www.pecesama.net/}] y actualmente cuenta con el siguiente equipo de desarrollo:
+
+\begin{itemize}
+  \item \textbf{Pedro Santana}. Líder del proyecto. [ http://www.pecesama.net/ ]
+	\item \textbf{Victor Bracco}. Desarrollador. [ http://victorbracco.com/ ]
+	\item \textbf{Victor de la Rocha}. Desarrollador [ http://www.mis-algoritmos.com/ ]
+	\item \textbf{Jorge Condomi}. Desarrollador [ http://www.jorgecondomi.com/ ]
+	\item \textbf{Aaron Munguia}. Desarrollador
+	\item \textbf{Pablo Cendejas}. Administrador de la documentación.
+\end{itemize}
+
+
+\subsection{Sobre FlavorPHP}
+
+Como ya se mencionó anteriormente \textbf{FlavorPHP} es un framework MVC jerárquico desarrollado en PHP5, el cual surge en base a la experiencia previa de sus autores en el desarrollo de proyectos Web 2.0 (algunos ejemplos de estos proyectos http://gelatocms.com/ y http://sabros.us/), esta basado en las mejores prácticas de desarrollo web, proveyendo eficiencia en la creación y en el mantenimiento de aplicaciones Web.
+
+\textbf{FlavorPHP} incluye las siguientes características:
+
+\begin{itemize}
+	\item Separación de la aplicación en diferentes capas.
+	\item Sistema de plantillas (themes) y vistas fácil de usar.
+	\item Uso del patrón Active Record para implementar ORM.
+	\item Desarrollo de aplicaciones multi-idiomas.
+	\item Sistema de paginación de datos rápido de implementar.
+	\item Soporte para AJAX y efectos JavaScript usando jQuery.
+\end{itemize}
+
+\subsection{Prerrequisitos de FlavorPHP}
+
+\textbf{FlavorPHP} tiene un número muy pequeño de prerrequisitos pero que deben cumplirse para que funcione correctamente, estos se listan a continuación:
+
+\begin{itemize}
+	\item PHP5 (recomendado 5.2).
+	\item Servidor Web Apache con mod\_rewrite instalado.
+	\item Servidor de Base de Datos MySQL.
+\end{itemize}
+
+\subsection{Instalación de FlavorPHP}
+
+\textbf{FlavorPHP} es distribuido en un paquete descargable desde su sitio web http://www.flavorphp.com/.
+
+Este paquete debe descomprimirse completo en el directorio deseado de su servidor web. El directorio creado puede ser renombrado al nombre que desee, por ejemplo el nombre del proyecto, o bien puede descomprimir \textbf{FlavorPHP} directamente al directorio raíz de su servidor web.
+
+\section{Iniciando con FlavorPHP}
+
+Para iniciar a crear nuestros proyectos con \textbf{FlavorPHP}, debemos primero conocer su estructura y como configurarlo.
+
+\subsection{Patrón de diseño MVC ( Modelo - Vista - Controlador )}
+
+En 1979, Trygve Reenskaug desarrolló una arquitectura para crear aplicaciones interactivas. En este diseño existian tres partes: modelos, vistas y controladores.
+
+El modelo MVC permite hacer la separación de las capas de interfaz, modelo y lógica de control de esta. \textbf{FlavorPHP} esta desarrollado utilizando este patrón de diseño, por lo cual cuenta con una estructura de directorios especial, la cual analizaremos a continuación.
+
+\subsection{Estructura de FlavorPHP}
+
+Una vez instalado \textbf{FlavorPHP} veremos una estructura de directorios especial. El contenido que tiene cada directorio se analiza en la tabla~\ref{DirectoriosFlavor}
+
+\begin{table}[!hp]
+\caption{Estructura de directorios}
+\label{DirectoriosFlavor}
+\begin{center}
+\begin{tabular}{l l} \hline
+  \textbf{Directorio} & \textbf{Contenido} \\ \hline \\
+  controllers & \parbox{7cm}{Este directorio contendrá todos nuestros controladores.}  \\ \\
+  flavor & \parbox{7cm}{Este directorio contiene el nucleo de \textbf{FlavorPHP}.}  \\ \\
+  languages & \parbox{7cm}{Este directorio contendrá las traducciones de nuestra aplicación.}  \\ \\
+  libs & \parbox{7cm}{Este directorio contendrá todas las librerías externas a \textbf{FlavorPHP}}  \\ \\
+  models & \parbox{7cm}{Este directorio contendrá todos nuestros modelos.}  \\ \\
+  views & \parbox{7cm}{Este directorio contendrá todas nuestras vistas.}  \\ \\
+  .htaccess & \parbox{7cm}{Este archivo se encarga del hacer el ruteo de nuestra aplicación.}  \\ \\
+  config.php & \parbox{7cm}{Este archivo contendrá la configuración de nuestra aplicación.}  \\ \\
+  index.php & \parbox{7cm}{Este archivo es el punto de entrada a nuestra aplicación (no debe modificarse).}  \\ \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Al respetar y seguir esta estructura de archivos y derectorios podremos crear nuestra aplicación usando convención sobre configuración, de esta forma al tener todo en su lugar es más sencillo encontrar problemas y mantener la aplicación de forma rápida y sencilla.
+
+\subsection{Configuración de FlavorPHP}
+
+\textbf{FlavorPHP} esta pensado para que se tenga que configurar lo menor posible, por lo que todas las configuraciones las encontraremos en un mismo archivo \emph{./config.php} (ver listado~\ref{lst:config}). En este archivo configuraremos nuestra conexión al servidor de Bases de Datos, así como la ruta base de nuestro proyecto.
+
+\color{normal}
+\begin{lstlisting}[frame=tb, caption=config.php, label=lst:config, showspaces=false]{}
+//requiere de BD
+define('requiresBD', true);
+//conector de BD.
+define('DB_Engine', 'mysqli');
+//servidor de BD.
+define('DB_Server', 'localhost');
+//nombre de la BD.
+define('DB_name', 'nombreBD');
+//usuario de la BD.
+define('DB_User', 'usuarioBD');
+//contraseña del usuario de la BD.
+define('DB_Password', 'contraseñaBD');
+define('DB_Port', false); //puerto
+//ruta base del proyecto.
+define('Path', "http://localhost/flavor");
+\end{lstlisting}
+\color{black}
+
+En la tabla~\ref{tbl:config} se describen los valores del archivo de configuración.
+
+\begin{table}[!hp]
+\caption{Archivo de configuración}
+\label{tbl:config}
+\begin{center}
+\begin{tabular}{l l} \hline
+  \textbf{Valor} & \textbf{Descripción} \\ \hline \\
+  requiresBD & \parbox{7cm}{Define si requiere de una base de datos (true, false).}  \\ \\
+  DB\_Engine & \parbox{7cm}{Tipo de motor de base de datos. Dependiendo de su valor es la conexión que se generará \footnote{Por el momento FlavorPHP solo soporta MySQL como servidor de bases de datos.}.}  \\ \\
+  DB\_Server & \parbox{7cm}{Nombre del equipo o IP donde se encuentra el servidor de base de datos. (generalmente es \emph{localhost} ó \emph{127.0.0.1}).}  \\ \\
+  DB\_name & \parbox{7cm}{Nombre de la base de datos que contrendrá el proyecto.}  \\ \\
+  DB\_User & \parbox{7cm}{Usuario para conectarse a la base de datos.}  \\ \\
+  DB\_Password & \parbox{7cm}{Contraseña de usuario para conectarse a la base de datos.}  \\ \\
+  DB\_Port & \parbox{7cm}{Número de puerto para la conexión (si es necesario).}  \\ \\
+  Path & \parbox{7cm}{Ruta base del proyecto.}  \\ \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Una vez que hemos modificado nuestro \emph{./config.php} con la información de configuración de nuestro proyecto, estamos creca de poder comenzar a desarrollar con \textbf{FlavorPHP}, pero antes de eso veamos como hacer uso de librerías de clases externas a nuestro framework.
+
+\subsection{Librerías de terceros en FlavorPHP}
+
+Si deseamos incluir nuestras propias (o de terceros) clases en nuestro proyectos y que FlavorPHP las detecte de forma automática  \footnote{solo detecta clases, no archivos de funciones.}, podemos hacerlo dentro de la carpeta \emph{./libs}. Para esto basta con seguir la siguiente convención:
+
+\begin{itemize}
+	\item Crear (o descargar) nuestra clase.
+	\item Llamar (o renombrar) el archivo de nuestra clase como \textbf{\textit{nombre\_clase}.class.php}.
+	\item Mover el archivo de nuestra clase a la carpeta \emph{./libs}.
+\end{itemize}
+
+Por ejemplo, tenemos una clase que al crearse regresa una cadena con el valor de \"Hola\" (ver listado~\ref{lst:hola})
+
+\color{normal}
+\begin{lstlisting}[frame=tb, caption=Saludo de Hola, label=lst:hola, showspaces=false]{}
+class hola {	
+	public function __construct() {
+		return "Hola";
+	}	
+}
+\end{lstlisting}
+\color{black}
+
+Para poder usar esta clase en \textbf{FlavorPHP} debemos llamarla \emph{hola.class.php} y guardarla dentro de la carpeta \emph{./libs}, es decir quedaría \emph{./libs/hola.class.php}. Si seguimos esta convención ya no será necesario utilizar \emph{include} o \emph{require} dentro de nuestro proyecto.
+
+Ahora sí, estamos listos para comenzar a programar utilizando \textbf{FlavorPHP}.

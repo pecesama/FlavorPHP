@@ -1,0 +1,30 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}FlavorPHP}{9}
+\contentsline {section}{\numberline {1.1}Introducci\'on}{10}
+\contentsline {subsection}{\numberline {1.1.1}Sobre FlavorPHP}{10}
+\contentsline {subsection}{\numberline {1.1.2}Prerrequisitos de FlavorPHP}{10}
+\contentsline {subsection}{\numberline {1.1.3}Instalaci\'on de FlavorPHP}{11}
+\contentsline {section}{\numberline {1.2}Iniciando con FlavorPHP}{11}
+\contentsline {subsection}{\numberline {1.2.1}Patr\'on de dise\~no MVC ( Modelo - Vista - Controlador )}{11}
+\contentsline {subsection}{\numberline {1.2.2}Estructura de FlavorPHP}{11}
+\contentsline {subsection}{\numberline {1.2.3}Configuraci\'on de FlavorPHP}{11}
+\contentsline {subsection}{\numberline {1.2.4}Librer\IeC {\'\i }as de terceros en FlavorPHP}{14}
+\contentsline {chapter}{\numberline {2}MVC (Modelo-Vista-Controlador)}{15}
+\contentsline {section}{\numberline {2.1}Implementando con MVC}{16}
+\contentsline {section}{\numberline {2.2}Conceptos del MVC}{16}
+\contentsline {section}{\numberline {2.3}URLs en FlavorPHP (routing)}{16}
+\contentsline {subsection}{\numberline {2.3.1}Llamar al controlador index}{17}
+\contentsline {subsubsection}{Controlador index con par\'ametro}{17}
+\contentsline {subsection}{\numberline {2.3.2}Invocar a los m\'etodos index}{17}
+\contentsline {section}{\numberline {2.4}Hola mundo con FlavorPHP}{18}
+\contentsline {chapter}{\numberline {3}Mi primera aplicaci\'on con Flavor}{21}
+\contentsline {section}{\numberline {3.1}Introducci\'on}{22}
+\contentsline {section}{\numberline {3.2}El modelo de datos}{22}
+\contentsline {subsection}{\numberline {3.2.1}Crear la BD}{23}
+\contentsline {subsection}{\numberline {3.2.2}Crear el modelo}{23}
+\contentsline {section}{\numberline {3.3}Crear los controladores y las vistas}{24}
+\contentsline {subsection}{\numberline {3.3.1}Usando un modelo desde un controlador}{24}
+\contentsline {subsection}{\numberline {3.3.2}Crear la vista}{24}
+\contentsline {subsection}{\numberline {3.3.3}Agregar enlace}{26}
+\contentsline {subsection}{\numberline {3.3.4}Editar enlace}{26}
+\contentsline {subsection}{\numberline {3.3.5}Eliminar enlace}{27}
