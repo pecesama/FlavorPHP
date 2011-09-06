@@ -131,11 +131,11 @@ class Mysqli_db extends Singleton implements Data {
 		if(is_null($sqlError)){
 			$sqlError = "It seems that there are not a connection to MySQL.<br />
 			Try one of those tips:<br />
-			<ul>
+			<ol>
 				<li>Check if the /config.php file is correctly configured or exists.</li>
 				<li>Check if your MySQL service is online.</li>
-			</ul>
-			";
+				<li>Check if the constants DB_User and DB_Password are the same that your MySQL service in the /config.php file.</li>
+			</ol>";
 		}
 		
 		if(is_null($sqlErrNo)){
