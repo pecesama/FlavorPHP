@@ -2,7 +2,7 @@
 
 abstract class AppController extends Controller {
 	
-	$protected $messages;
+	protected $messages;
 	
 	public function __construct() {
 		parent::__construct();

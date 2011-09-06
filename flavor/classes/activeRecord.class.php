@@ -16,7 +16,7 @@ class ActiveRecord implements ArrayAccess {
 		$this->table = $this->modelName();
 
 		$rs = $this->db->query("SHOW COLUMNS FROM ".$this->table);
-		
+
 		while ($row = $this->db->fetchRow()) {
 			$this->columns[$row["Field"]] = $row;
 			$this->record[$row["Field"]] = "";

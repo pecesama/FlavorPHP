@@ -17,8 +17,9 @@ class Singleton {
                     
                     self::$instances[$class] = $reflector->newInstanceArgs($params);
 		}
+		
 		return self::$instances[$class];
 	}
-
+	
 	private final function __clone() {}
 }

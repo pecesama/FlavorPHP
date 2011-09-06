@@ -8,4 +8,3 @@ define('DB_name', '');
 define('DB_Port', false);
 define('Path', "http://localhost");
 //define('Absolute2Flavor', dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."flavor".DIRECTORY_SEPARATOR); // This is just an example...
-?>
