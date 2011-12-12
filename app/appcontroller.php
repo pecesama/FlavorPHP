@@ -2,12 +2,8 @@
 
 abstract class AppController extends Controller {
 	
-	protected $messages;
-	
 	public function __construct() {
 		parent::__construct();
-		
-		$this->messages = Message::getInstance();
 	}
 	
 	public function beforeRender(){

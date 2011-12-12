@@ -17,3 +17,4 @@ interface Data {
 	public function close();
 	
 }
+?>

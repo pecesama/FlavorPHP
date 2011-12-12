@@ -6,7 +6,7 @@ class Mysqli_db extends Singleton implements Data {
 	private $query_result;
 	private $transaction = false;
 	
-	public function __construct() {
+	protected function __construct() {
 		$this->dbServer = DB_Server . ((DB_Port) ? ':' . DB_Port : '');
 
 		$this->connectionId = @mysqli_connect($this->dbServer, DB_User, DB_Password);
@@ -125,24 +125,7 @@ class Mysqli_db extends Singleton implements Data {
 	}
 	
 	public function errorInfo($sql = '') { 
-		$sqlError = @mysqli_error($this->connectionId);
-		$sqlErrNo = @mysqli_errno($this->connectionId);
-		
-		if(is_null($sqlError)){
-			$sqlError = "It seems that there are not a connection to MySQL.<br />
-			Try one of those tips:<br />
-			<ol>
-				<li>Check if the /config.php file is correctly configured or exists.</li>
-				<li>Check if your MySQL service is online.</li>
-				<li>Check if the constants DB_User and DB_Password are the same that your MySQL service in the /config.php file.</li>
-			</ol>";
-		}
-		
-		if(is_null($sqlErrNo)){
-			$sqlErrNo = "-";
-		}
-		
-		return '<u>SQL ERROR</u> <br /><br />' . $sqlError . '<br /><br /><u>SQL ERROR NUMBER</u> <br /><br />' . $sqlErrNo . (($sql != '') ? '<br /><br /><u>SQL</u><br /><br />' . $sql : '') . '<br />';
+		return '<u>SQL ERROR</u> <br /><br />' . @mysqli_error($this->connectionId) . '<br /><br /><u>SQL ERROR NUMBER</u> <br /><br />' . @mysqli_errno($this->connectionId) . (($sql != '') ? '<br /><br /><u>SQL</u><br /><br />' . $sql : '') . '<br />';
 	}
 	
 	public function close() {

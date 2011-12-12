@@ -41,20 +41,19 @@ abstract class Controller {
 		$this->beforeDispatch();
 	}
 
-	abstract public function index(); 
+	abstract public function index($id=NULL);
 		
 	public function beforeRender() {}
 	public function afterRender() {}
 	public function beforeDispatch() {}
 		
-	public function redirect($url, $intern = true, $endsWith = "/") {
-		//Victor De la Rocha: Esta línea a que proceso pertenece, y que hace en controllers?
+	public function redirect($url, $intern = true) {
 		$_SESSION["flavor_php_session"]["validateErrors"] = $this->registry->validateErrors;
 		
-		if ($intern){
-			$url = (!$this->endsWith($url, $endsWith)) ? $url.$endsWith : $url ;
+		if ($intern) {
+			$url = (!$this->endsWith($url, "/")) ? $url."/" : $url ;
 			$url = $this->path.$url;
-		}else{
+		} else {
 			$url = $url;
 		}
 		
@@ -62,25 +61,16 @@ abstract class Controller {
 		exit();
 	}
 	
-	protected function endsWith($str, $sub) {
-		return (substr($str, strlen($str) - strlen($sub)) == $sub);
-	}
-	
 	public function render($view=NULL) {
 		if($this->html->type == "views"){
 			if (is_null($view)) {
 				$view = $this->action;
 			}
-			
+			$this->beforeRender();
 			$this->view->content_for_layout = $this->view->fetch($this->controllerName().".".$view);
 			$this->view->title_for_layout = $this->tfl;
-			$output = $this->view->fetch("", "layout");
-			
-			echo $this->showDebug();
-			$this->beforeRender(&$output);
-			echo $output;
+			echo $this->showDebug().$this->view->fetch("", "layout");
 			$this->afterRender();
-			
 			$this->debug->clearLogs();
 			exit();
 		}else{
@@ -90,14 +80,14 @@ abstract class Controller {
 	
 	public function renderTheme($theme,$file='index.htm'){
 		$this->beforeRender();
-		$path = Absolute_Path.APPDIR.DIRSEP.$theme.DIRSEP."$file";
+		$path = Absolute_Path."app".DIRSEP.$theme.DIRSEP."$file";
 		echo $this->themes->fetch($path);
 		$this->afterRender();
 		exit;
 	}
 
 	public function fetchTheme($theme,$file='index.htm'){
-		$path = Absolute_Path.APPDIR.DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";
+		$path = Absolute_Path."app".DIRSEP."themes".DIRSEP.$theme.DIRSEP."$file";
 		return $this->themes->fetch($path);
 	}
 	
@@ -116,13 +106,20 @@ abstract class Controller {
 		return strtolower($controller[0]);
 	}
 	
+	protected function endsWith($str, $sub) {
+		return (substr($str, strlen($str) - strlen($sub)) == $sub);
+	}
+	
 	protected function showDebug(){
 		if ($this->debug->isEnabled()) {
 			return $this->debug->show();
 		}else return '';
 	}
 	
-	public function isAjax() {
+	/*Why private??*/ function isAjax() {
+		//var_dump($_SERVER);
+		//die();
 		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']=="XMLHttpRequest");
 	} 
+	
 }
