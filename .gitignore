@@ -2,3 +2,5 @@ config.php
 .buildpath
 .project
 .settings/
+# netbeans project
+nbproject/*
