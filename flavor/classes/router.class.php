@@ -23,32 +23,25 @@ class Router{
 	public function dispatch() {
 		$this->getController();
 
-		$controller = $this->class['controller'];
-		$action = $this->class['action'];
-		$params = $this->class['params'];
-		
-		$class = $controller."_controller";
-		$controller = new $class();
+        $controller = $this->class['controller'];
+        $action = $this->class['action'];
+        $params = $this->class['params'];
+        
+        $class = $controller."_controller";
+        
+        $this->parts = array_pad($this->parts, -(count($this->parts) + count($params)), $params);
+        
+        $reflection_class = new ReflectionClass($class);
+        $controller = $reflection_class->newInstanceArgs(array()); // FIXME: how get the construct params?
 
-		if(!is_callable(array($controller,$action))) {
-			$this->notFound();
-		}
-
-		$controller->action = $action;
-		$controller->params = $params;
-
-		if($params){
-			//Maybe we want more parameters
-			$extra_params = '';
-			foreach($this->parts as $param){
-				$extra_params .= ", '$param'";			
-			}
-			
-			$exec = "\$controller->".$action."('".$params."'".$extra_params.");";
-			eval($exec);
-		}else{
-			$controller->$action();
-		}
+        if(!is_callable(array($controller,$action))) {
+                $this->notFound();
+        }
+        
+        $controller->params = $this->parts;
+        
+        $controller->action = $action;
+        call_user_func_array(array($controller, $controller->action), $controller->params);
 	}
 	
 	private function getController(){
