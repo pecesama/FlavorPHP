@@ -96,7 +96,14 @@ abstract class Controller {
 	}
 	
 	protected function controllerName(){
-		$source = get_class($this);
+		// Get the class name
+		$className = get_class($this);
+		// remove '_controller' string, we suppose that you'll don't use '_controller' like controller name
+		$className = str_replace('_controller', '', $className);		
+		// transform to low case and return
+		return strtolower($className);
+
+		/*
 		if(preg_match("/([a-z])([A-Z])/", $source, $reg)){
 			$source = str_replace($reg[0], $reg[1]."_".strtolower($reg[2]), $source);
 		}	
@@ -104,6 +111,7 @@ abstract class Controller {
 		$controller = explode("_", $source);
 		
 		return strtolower($controller[0]);
+		*/
 	}
 	
 	protected function endsWith($str, $sub) {
