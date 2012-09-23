@@ -233,4 +233,35 @@ class Html extends Singleton {
 		$html .= "</select>\n";
 		return $html;
 	}
+        
+        /**
+         * Function to create a html select component from a model result.
+         * 
+         * @param string $name
+         * @param array $items
+         * @param string $selected
+         * @param string $descriptionKey
+         * @param string $valueKey
+         * @param string $htmlAttributs
+         * @return string 
+         */
+        public function selectFromModel($name, $items, $selected="", $descriptionKey=NULL, $valueKey=NULL, $htmlAttributs = ""){
+            $html = "<select name=\"$name\" id=\"$name\" $htmlAttributs>\n";
+            foreach ($items as $key => $item){
+                $html .= "\t<option";
+
+                // Set value 
+                $value = $valueKey == NULL ? $key : ( isset($item[$valueKey])? $item[$valueKey] : $key );
+                $html .= " value=\"$value\"";
+                if($selected == $value){
+                    $html .= " selected=\"selected\"";
+                }
+                
+                // Set description
+                $description = $descriptionKey == NULL ? $item : ( isset($item[$descriptionKey])? $item[$descriptionKey] : $item ); ;
+                $html .= ">$description</option>\n";
+            }
+            $html .= "</select>\n";
+            return $html;
+        }
 }
