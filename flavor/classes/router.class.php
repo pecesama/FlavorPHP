@@ -35,7 +35,7 @@ class Router{
         $controller = $reflection_class->newInstanceArgs(array()); // FIXME: how get the construct params?
 
         if(!is_callable(array($controller,$action))) {
-                $this->notFound();
+            $this->notFound();
         }
         
         $controller->params = $this->parts;
