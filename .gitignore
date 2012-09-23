@@ -5,3 +5,4 @@ config.php
 # netbeans project
 nbproject/*
 nbproject/*/*
+.DS_Store
